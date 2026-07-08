@@ -354,6 +354,7 @@
   margin-bottom: 10px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   border-left: 8px solid ;
+  max-height: 100px;
 }
 
 /* Status coloring flourishes */
@@ -379,5 +380,6 @@
   gap: 8px;
 }
 
-
-
+.dashbg .task-note {
+  max-height: 100px;
+}
