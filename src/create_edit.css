@@ -291,8 +291,8 @@
 .insert_textarea {
   padding: 10px;
   border-radius: 6px;
-  background: var(--input-bg, #fff);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #fff;
+  border: 1px solid  #ccc;
   color: black;
   resize: vertical;
   font-family: inherit;
@@ -307,8 +307,8 @@
 .insert_input-date {
   padding: 10px;
   border-radius: 6px;
-  background: var(--input-bg, #fff);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #fff;
+  border: 1px solid  #ccc;
   color: black;
   font-family: inherit;
   font-size: 14px;
