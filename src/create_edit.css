@@ -352,6 +352,13 @@
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   border-left: 8px solid ;
   cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.dashbg .print_task-card:hover {
+  transform: translateY(-3px) translateX(4px);
+  box-shadow: 0 0 10px 3px #a0caff;
 }
 
 
@@ -383,11 +390,7 @@
   flex-direction: column;
   gap: 25px;
 }
-.dashbg .print_list-section-title {
-  border-bottom: 2px solid #edf2f7;
-  padding-bottom: 5px;
-  margin-bottom: 10px;
-}
+
 .dashbg .print_list-container {
   display: flex;
   flex-direction: column;
@@ -439,21 +442,61 @@
   margin-bottom: 10px;
 }
 
+/* --- TO DO SECTION --- */
+.dashbg .print_list-section.print_todo h3 {
+  border-bottom: 2px solid #edf2f7;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  color: #55638c; 
+  text-align: center;
+}
+
+/* --- IN PROGRESS SECTION --- */
+.dashbg .print_list-section.print_progress h3 {
+  border-bottom: 2px solid #edf2f7;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  color: #bdaa49;
+  text-align: center;
+}
+
+/* --- COMPLETED SECTION --- */
+.dashbg .print_list-section.print_completed h3 {
+  border-bottom: 2px solid #edf2f7;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  color: #5f915d;
+  text-align: center;
+}
+
+/* --- OVER SECTION --- */
+.dashbg .print_list-section.print_over h3 {
+  border-bottom: 2px solid #edf2f7;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  color: #a86969;
+  text-align: center;
+}
+
 
 .print_kanban-column.print_todo h3 {
   color: #55638c; 
+  text-align: center;
 }
 
 .print_kanban-column.print_progress h3 {
   color: #bdaa49;
+  text-align: center;
 }
 
 .print_kanban-column.print_completed h3 {
   color: #5f915d;
+  text-align: center;
 }
 
 .print_kanban-column.print_over h3 {
   color: #a86969;
+  text-align: center;
 }
 
 .task-date {
