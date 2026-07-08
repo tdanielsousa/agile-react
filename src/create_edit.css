@@ -291,9 +291,9 @@
 .insert_textarea {
   padding: 10px;
   border-radius: 6px;
-  background: var(--input-bg, #1a1d24);
+  background: var(--input-bg, #fff);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #ffffff;
+  color: black;
   resize: vertical;
   font-family: inherit;
   font-size: 14px;
@@ -305,15 +305,13 @@
 }
 
 .insert_input-date {
-  width: 100%;
   padding: 10px;
   border-radius: 6px;
-  background: var(--input-bg, #1a1d24);
+  background: var(--input-bg, #fff);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #ffffff;
+  color: black;
   font-family: inherit;
   font-size: 14px;
-  color-scheme: dark; /* Dark variant rendering flag for calendar windows */
 }
 
 .insert_input-date:focus {
