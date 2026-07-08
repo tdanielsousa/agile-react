@@ -444,38 +444,34 @@
 
 /* --- TO DO SECTION --- */
 .dashbg .print_list-section.print_todo h3 {
-  border-bottom: 2px solid #edf2f7;
+  border-bottom: 2px solid #55638c;
   padding-bottom: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
   color: #55638c; 
-  text-align: center;
 }
 
 /* --- IN PROGRESS SECTION --- */
 .dashbg .print_list-section.print_progress h3 {
-  border-bottom: 2px solid #edf2f7;
+  border-bottom: 2px solid #bdaa49;
   padding-bottom: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
   color: #bdaa49;
-  text-align: center;
 }
 
 /* --- COMPLETED SECTION --- */
 .dashbg .print_list-section.print_completed h3 {
-  border-bottom: 2px solid #edf2f7;
+  border-bottom: 2px solid #5f915d;
   padding-bottom: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
   color: #5f915d;
-  text-align: center;
 }
 
 /* --- OVER SECTION --- */
 .dashbg .print_list-section.print_over h3 {
-  border-bottom: 2px solid #edf2f7;
+  border-bottom: 2px solid #a86969;
   padding-bottom: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
   color: #a86969;
-  text-align: center;
 }
 
 
