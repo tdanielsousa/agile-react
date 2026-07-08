@@ -351,28 +351,29 @@
   margin-bottom: 10px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   border-left: 8px solid ;
+  cursor: pointer;
 }
 
 
 /* Status coloring flourishes */
 .dashbg .print_todo .print_task-card { 
   border: solid #55638c;
-  border-width: 1px 8px 1px 1px;
+  border-width: 1px 1px 1px 8px;
 }
 
 .dashbg .print_progress .print_task-card { 
   border: solid #bdaa49;
-  border-width: 1px 8px 1px 1px; 
+  border-width: 1px 1px 1px 8px; 
 }
 
 .dashbg .print_completed .print_task-card {
   border: solid #5f915d;
-  border-width: 1px 8px 1px 1px;
-  }
+  border-width: 1px 1px 1px 8px;
+}
 
 .dashbg .print_over .print_task-card { 
   border: solid #a86969;
-  border-width: 1px 8px 1px 1px;
+  border-width: 1px 1px 1px 8px;
 }
 
 
@@ -399,7 +400,7 @@
   font-size: 1rem;
   overflow-wrap: break-word;
   overflow: hidden;
-
+  color: black;
   /* 1. Official Standard Property */
   line-clamp: 1;
 
@@ -436,4 +437,25 @@
 
 .print_kanban-column h3 {
   margin-bottom: 10px;
+}
+
+
+.print_kanban-column.print_todo h3 {
+  color: #55638c; 
+}
+
+.print_kanban-column.print_progress h3 {
+  color: #bdaa49;
+}
+
+.print_kanban-column.print_completed h3 {
+  color: #5f915d;
+}
+
+.print_kanban-column.print_over h3 {
+  color: #a86969;
+}
+
+.task-date {
+  color: black;
 }
