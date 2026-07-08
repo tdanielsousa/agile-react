@@ -297,6 +297,7 @@
   resize: vertical;
   font-family: inherit;
   font-size: 14px;
+  max-height: 130px;
 }
 
 .insert_textarea:focus {

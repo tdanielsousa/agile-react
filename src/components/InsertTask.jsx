@@ -21,7 +21,7 @@ function InsertTask({ user, projectId, onClose, onTaskAdded }) {
     setSubmitting(true);
 
     try {
-      const response = await fetch('/api/create-task', {
+      const response = await fetch('/create-task', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
