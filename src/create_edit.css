@@ -1,0 +1,322 @@
+.creator-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+  }
+  
+  /* Alert System at the top */
+  .creator-container .alert-message {
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    animation: fadeIn 0.2s ease-in-out;
+  }
+  
+  .creator-container .alert-message.error-banner {
+    background-color: #fde8e8;
+    color: #9b1c1c;
+    border: 1px solid #f8b4b4;
+  }
+  
+  .creator-container .alert-message.success-banner {
+    background-color: #def7ec;
+    color: #03543f;
+    border: 1px solid #bcf0da;
+  }
+  
+  /* Form Styles */
+  .creator-container .creator-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .creator-container .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 4px; /* Added explicit margin safety */
+  }
+
+  .creator-container .top {
+    margin-top: 15px;
+    margin-bottom: 30px;
+  }
+  
+  
+  .creator-container .form-group label {
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  
+  .creator-container .form-group input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+  
+  .creator-container .btn-submit {
+    padding: 10px 16px;
+    background-color: #0a14a3; 
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  
+  .creator-container .btn-submit:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+  }
+
+  /* Container Workspace Setup */
+.creator-container .editor-container,
+.editor-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+}
+
+/* /////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////// */
+
+/* Container Workspace Setup */
+.dashbg .creator-container .editor-container,
+.dashbg .editor-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+}
+
+/* Empty State Styles */
+.dashbg .editor-container.empty-state .empty-message {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  color: #666;
+}
+
+/* Master Toolbar Layout Frame */
+.dashbg .editor-toolbar {
+  background-color: #d9d9d9; 
+  border: 1px solid #e2d9e1;
+  border-radius: 16px;
+  padding: 6px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+/* Row Partitioning */
+.dashbg .editor-toolbar .toolbar-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 36px;
+}
+
+.dashbg .editor-toolbar .secondary-row {
+  border-top: 1px solid #e2d9e1;
+  padding-top: 6px;
+}
+
+/* Shared Item Alignment Containers */
+.dashbg .editor-toolbar .toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Label & Plain Texts */
+.dashbg .editor-toolbar .label {
+  font-weight: 700;
+  color: #2c3e50;
+  font-size: 0.95rem;
+}
+
+.dashbg .editor-toolbar .project-current-name {
+  font-weight: 500;
+  color: #4a5568;
+  font-size: 0.95rem;
+}
+
+/* Base Link Button Styles */
+.dashbg .editor-toolbar .toolbar-btn {
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #335edd; 
+  padding: 6px 12px;
+  border-radius: 30px;
+  transition: all 0.2s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 1px solid #c6c6c6;
+}
+
+/* Interaction Hover Layer Rules */
+.dashbg .editor-toolbar .toolbar-btn:hover {
+  background-color: #ffffff;
+  color: #0a14a3;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-color: #cbd5e1;
+}
+
+/* Specific Action Classes - Combined directly with toolbar-btn to ensure they win over the base button */
+.dashbg .editor-toolbar .actions-right {
+  margin-left: auto;
+}
+
+.dashbg .editor-toolbar .utilities-right {
+  margin-left: auto;
+}
+
+.dashbg .editor-toolbar .toolbar-btn.btn-save {
+  margin-right: 50px;
+}
+
+.dashbg .editor-toolbar .toolbar-btn.btn-delete {
+  color: #dc2626; 
+  margin-left: 40px;
+}
+.dashbg .editor-toolbar .toolbar-btn.btn-delete:hover {
+  background-color: #fef2f2;
+  color: #b91c1c;
+}
+
+/* Layout Button Toggle Accents */
+.dashbg .editor-toolbar .toolbar-btn.active-layout {
+  background-color: #ffffff;
+  border-color: #cbd5e1;
+  color: #0a14a3;
+}
+
+/* Workspace Frame styling below the taskbar */
+.dashbg .editor-workspace {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  min-height: 200px;
+  border: 1px solid #eaeaea;
+}
+
+.dashbg .editor-workspace .workspace-placeholder {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* /////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////// */
+
+/* Dark semi-transparent fullscreen layout overlay */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px); /* Blurs out dashboard details under modal */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999; /* Higher priority than sidebar stacking */
+  animation: modalFadeIn 0.2s ease-out forwards;
+}
+
+/* Enhances your existing creator-container layout wrapper when acting as a modal */
+.modal-box {
+  position: relative;
+  background: #ffffff; /* Change to match your exact dashboard background hex */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  max-width: 480px;
+  width: 90%;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  animation: modalSlideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Style the absolute positioned X button */
+.modal-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 32px;
+  line-height: 1;
+  color: #a0aec0;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s ease;
+}
+
+.modal-close-btn:hover {
+  color: #ffffff;
+}
+
+/* Clean UI keyframes animations */
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* /////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////// */
+
+/* Prefix isolated styles for InsertTask form parameters */
+.insert_textarea {
+  padding: 10px;
+  border-radius: 6px;
+  background: var(--input-bg, #1a1d24);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  resize: vertical;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.insert_textarea:focus {
+  outline: none;
+  border-color: var(--blue, #3b82f6);
+}
+
+.insert_input-date {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  background: var(--input-bg, #1a1d24);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  color-scheme: dark; /* Dark variant rendering flag for calendar windows */
+}
+
+.insert_input-date:focus {
+  outline: none;
+  border-color: var(--blue, #3b82f6);
+}
