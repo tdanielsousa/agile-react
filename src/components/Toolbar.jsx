@@ -30,7 +30,7 @@ function Toolbar({ user, project, projectId, layout, setLayout, onStatusChange, 
             className={`toolbar-btn btn-done ${project.status === 'OVER' ? 'active-layout' : ''}`}
             onClick={(e) => onStatusChange(e, 'OVER')}
           >
-            Set project as Done
+            Set project as Archived
           </a>
           <a 
             href="#" 
