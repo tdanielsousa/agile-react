@@ -51,7 +51,16 @@ function Toolbar({ user, project, projectId, layout, setLayout, onStatusChange, 
           >
             + Add Task
           </a>
+
+          <a 
+            href="#" 
+            className="toolbar-btn btn-change-name"
+          >
+            Change Project Name
+          </a>
         </div>
+
+        
 
         <div className="toolbar-group utilities-right">
           <a 

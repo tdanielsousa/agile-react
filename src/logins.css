@@ -1,148 +1,132 @@
-/* logins.css */
-  
-  .login-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin: 20px 0;
-  }
-  
-  .login-input {
-    padding: 14px;
-    font-size: 0.95rem;
-    border: 1.5px solid #e2e8f0;
-    background-color: #f8fafc;
-    border-radius: 12px;
-    color: #334155;
-    transition: all 0.2s ease;
-  }
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0;
+}
 
-  .login-input:focus {
-    outline: none;
-    border-color: #2563eb;
-    background-color: #fff;
-    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
-  }
-  
-  .divider {
-    border: 0;
-    border-top: 1px solid #c9c9c9;
-    margin: 15px 0;
-  }
+.login-input {
+  padding: 14px;
+  font-size: 0.95rem;
+  border: 1.5px solid #e2e8f0;
+  background-color: #f8fafc;
+  border-radius: 12px;
+  color: #334155;
+  transition: all 0.2s ease;
+}
 
-  .register-btn {
-    color:#fff;
-    background-color:#c72e00;
-    border-radius:6px;
-    padding:12px 24px;
-    font-weight:600;
-    text-decoration:none;
-    transition:background-color .2s;
-    display:inline-block;
-    border: none;
-    cursor: pointer;
-  }
+.login-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
 
-  .register-btn:hover {
-    background-color: #912200;
-  }
+.divider {
+  border: 0;
+  border-top: 1px solid #c9c9c9;
+  margin: 15px 0;
+}
 
-  .oauth-btn {
-    display: inline-block;
-    background-color: #2563eb; 
-    color: white;
-    text-decoration: none;
-    padding: 12px 24px;
-    font-weight: 600;
-    border-radius: 6px;
-    transition: background-color 0.2s ease;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .oauth-btn:hover {
-    background-color: #1d4ed8;
-  }
+.register-btn {
+  color: #fff;
+  background-color: #c72e00;
+  border-radius: 6px;
+  padding: 12px 24px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+}
 
-  .error-message {
-    background-color: #ffeef0;
-    color: #720202;
-    border: 1px solid #ffccd3;
-    padding: 10px;
-    border-radius: 4px;
-    font-size: 14px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    text-align: center;
-    font-weight: 500;
-    letter-spacing: 0.3px;
-  }
+.register-btn:hover {
+  background-color: #912200;
+}
 
-  /* animation change*/
-  /* Base card transition setup */
+.oauth-btn {
+  display: inline-block;
+  background-color: #2563eb;
+  color: white;
+  text-decoration: none;
+  padding: 12px 24px;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.oauth-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.error-message {
+  background-color: #ffeef0;
+  color: #720202;
+  border: 1px solid #ffccd3;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
 .card {
-    transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
-  }
-  
-  /* State 1: When it appears on screen */
-  .fade-in {
-    opacity: 1;
-    transform: scale(1);
-  }
-  
-  /* State 2: When vanishing */
-  .fade-out {
-    opacity: 0;
-    transform: scale(0.95); /* Makes it shrink slightly as it disappears */
-  }
+  transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
+}
 
-  /* code for change btton */
+.fade-in {
+  opacity: 1;
+  transform: scale(1);
+}
 
-  /* Styles the overall text wrapper button to look like plain text */
+.fade-out {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
 .toggle-btn {
-    background: none;
-    border: none;
-    padding: 0;
-    font-family: inherit;
-    font-size: 14px;
-    color: #64748b; /* Muted slate gray for the question */
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px; /* Space between text and button */
-  }
-  
-  /* Turns the "Sign In here" text into the vibrant red button */
-  .inline-red-btn {
-    background-color: #c72e00; /* Brand red from image_fd77bd.png */
-    color: #ffffff;
-    font-weight: 600;
-    font-size: 13px;
-    padding: 6px 14px;
-    border-radius: 6px;
-    transition: background-color 0.15s ease;
-  }
-  
-  /* Darker hover state for when the user hovers over the button */
-  .toggle-btn:hover .inline-red-btn {
-    background-color: #912200;
-  }
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 14px;
+  color: #64748b;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
 
-/* Turns the "Sign In here" text into a vibrant blue button */
+.inline-red-btn {
+  background-color: #c72e00;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  transition: background-color 0.15s ease;
+}
+
+.toggle-btn:hover .inline-red-btn {
+  background-color: #912200;
+}
+
 .inline-blue-btn {
-    background-color: #2563eb; /* Vibrant brand blue */
-    color: #ffffff;
-    font-weight: 600;
-    font-size: 13px;
-    padding: 6px 14px;
-    border-radius: 6px;
-    transition: background-color 0.15s ease;
-  }
-  
-  /* Darker blue hover state for when the user hovers over the button */
-  .toggle-btn:hover .inline-blue-btn {
-    background-color: #1d4ed8; /* Deep blue on hover */
-  }
+  background-color: #2563eb;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  transition: background-color 0.15s ease;
+}
 
-
-  
+.toggle-btn:hover .inline-blue-btn {
+  background-color: #1d4ed8;
+}

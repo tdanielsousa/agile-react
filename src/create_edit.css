@@ -1,85 +1,80 @@
 .creator-container {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    width: 100%;
-  }
-  
-  /* Alert System at the top */
-  .creator-container .alert-message {
-    padding: 12px 16px;
-    border-radius: 6px;
-    font-weight: 500;
-    font-size: 0.95rem;
-    animation: fadeIn 0.2s ease-in-out;
-  }
-  
-  .creator-container .alert-message.error-banner {
-    background-color: #fde8e8;
-    color: #9b1c1c;
-    border: 1px solid #f8b4b4;
-  }
-  
-  .creator-container .alert-message.success-banner {
-    background-color: #def7ec;
-    color: #03543f;
-    border: 1px solid #bcf0da;
-  }
-  
-  /* Form Styles */
-  .creator-container .creator-form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-bottom: 10px;
-  }
-  
-  .creator-container .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 4px; /* Added explicit margin safety */
-  }
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
 
-  .creator-container .top {
-    margin-top: 15px;
-    margin-bottom: 30px;
-  }
-  
-  
-  .creator-container .form-group label {
-    font-weight: 600;
-    font-size: 0.9rem;
-  }
-  
-  .creator-container .form-group input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 1rem;
-  }
-  
-  .creator-container .btn-submit {
-    padding: 10px 16px;
-    background-color: #0a14a3; 
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 1rem;
-  }
-  
-  .creator-container .btn-submit:disabled {
-    background-color: #aaa;
-    cursor: not-allowed;
-  }
+.creator-container .alert-message {
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.creator-container .alert-message.error-banner {
+  background-color: #fde8e8;
+  color: #9b1c1c;
+  border: 1px solid #f8b4b4;
+}
+
+.creator-container .alert-message.success-banner {
+  background-color: #def7ec;
+  color: #03543f;
+  border: 1px solid #bcf0da;
+}
+
+.creator-container .creator-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.creator-container .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.creator-container .top {
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.creator-container .form-group label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.creator-container .form-group input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.creator-container .btn-submit {
+  padding: 10px 16px;
+  background-color: #0a14a3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.creator-container .btn-submit:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
 
 /* /////////////////////////////////////////////////////////////// */
 /* /////////////////////////////////////////////////////////////// */
-/* /////////////////////////////////////////////////////////////// */
 
-/* Container Workspace Setup */
 .dashbg .creator-container .editor-container,
 .dashbg .editor-container {
   display: flex;
@@ -89,16 +84,14 @@
   overflow: hidden;
 }
 
-/* Empty State Styles */
 .dashbg .editor-container.empty-state .empty-message {
   margin-top: 10px;
   margin-bottom: 15px;
   color: #666;
 }
 
-/* Master Toolbar Layout Frame */
 .dashbg .editor-toolbar {
-  background-color: #dfe0e1; 
+  background-color: #dfe0e1;
   border: 1px solid #a0caff;
   border-radius: 16px;
   padding: 6px 12px;
@@ -108,7 +101,6 @@
   width: 100%;
 }
 
-/* Row Partitioning */
 .dashbg .editor-toolbar .toolbar-row {
   display: flex;
   align-items: center;
@@ -122,14 +114,12 @@
   padding-top: 6px;
 }
 
-/* Shared Item Alignment Containers */
 .dashbg .editor-toolbar .toolbar-group {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-/* Label & Plain Texts */
 .dashbg .editor-toolbar .label {
   font-weight: 700;
   color: #2c3e50;
@@ -142,12 +132,11 @@
   font-size: 0.95rem;
 }
 
-/* Base Link Button Styles */
 .dashbg .editor-toolbar .toolbar-btn {
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 600;
-  color: #335edd; 
+  color: #335edd;
   padding: 6px 12px;
   border-radius: 30px;
   transition: all 0.2s ease-in-out;
@@ -155,7 +144,6 @@
   border: 1px solid #c6c6c6;
 }
 
-/* Interaction Hover Layer Rules */
 .dashbg .editor-toolbar .toolbar-btn:hover {
   background-color: #ffffff;
   color: #0a14a3;
@@ -163,7 +151,6 @@
   border-color: #cbd5e1;
 }
 
-/* Specific Action Classes - Combined directly with toolbar-btn to ensure they win over the base button */
 .dashbg .editor-toolbar .actions-right {
   margin-left: auto;
 }
@@ -172,12 +159,12 @@
   margin-left: auto;
 }
 
-.dashbg .editor-toolbar .toolbar-btn.btn-save {
+.dashbg .editor-toolbar .toolbar-btn {
   margin-right: 50px;
 }
 
 .dashbg .editor-toolbar .toolbar-btn.btn-delete {
-  color: #dc2626; 
+  color: #dc2626;
   margin-left: 40px;
 }
 .dashbg .editor-toolbar .toolbar-btn.btn-delete:hover {
@@ -185,14 +172,12 @@
   color: #b91c1c;
 }
 
-/* Layout Button Toggle Accents */
 .dashbg .editor-toolbar .toolbar-btn.active-layout {
   background-color: #ffffff;
   border-color: #cbd5e1;
   color: #0a14a3;
 }
 
-/* Workspace Frame styling below the taskbar */
 .dashbg .editor-workspace {
   background: #ffffff;
   border-radius: 8px;
@@ -208,9 +193,7 @@
 
 /* /////////////////////////////////////////////////////////////// */
 /* /////////////////////////////////////////////////////////////// */
-/* /////////////////////////////////////////////////////////////// */
 
-/* Dark semi-transparent fullscreen layout overlay */
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -218,18 +201,17 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px); /* Blurs out dashboard details under modal */
+  backdrop-filter: blur(4px);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 99999; /* Higher priority than sidebar stacking */
+  z-index: 99999;
   animation: modalFadeIn 0.2s ease-out forwards;
 }
 
-/* Enhances your existing creator-container layout wrapper when acting as a modal */
 .modal-box {
   position: relative;
-  background: #ffffff; /* Change to match your exact dashboard background hex */
+  background: #ffffff;
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -239,7 +221,6 @@
   animation: modalSlideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Style the absolute positioned X button */
 .modal-close-btn {
   position: absolute;
   top: 15px;
@@ -258,10 +239,13 @@
   color: #ffffff;
 }
 
-/* Clean UI keyframes animations */
 @keyframes modalFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes modalSlideUp {
@@ -277,14 +261,12 @@
 
 /* /////////////////////////////////////////////////////////////// */
 /* /////////////////////////////////////////////////////////////// */
-/* /////////////////////////////////////////////////////////////// */
 
-/* Prefix isolated styles for InsertTask form parameters */
 .insert_textarea {
   padding: 10px;
   border-radius: 6px;
   background: #fff;
-  border: 1px solid  #ccc;
+  border: 1px solid #ccc;
   color: black;
   resize: vertical;
   font-family: inherit;
@@ -301,7 +283,7 @@
   padding: 10px;
   border-radius: 6px;
   background: #fff;
-  border: 1px solid  #ccc;
+  border: 1px solid #ccc;
   color: black;
   font-family: inherit;
   font-size: 14px;
@@ -314,14 +296,11 @@
 
 /* /////////////////////////////////////////////////////////////// */
 /* /////////////////////////////////////////////////////////////// */
-/* /////////////////////////////////////////////////////////////// */
 
-
-/* Container Layouts */
 .dashbg .print_editor-workspace {
-  flex: 1;             
-  overflow-y: auto;    
-  overflow-x: auto;    
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: auto;
   margin-top: 20px;
   background-color: #dfe0e1;
   padding: 15px;
@@ -329,7 +308,6 @@
   border: 1px solid #a0caff;
 }
 
-/* Kanban System */
 .dashbg .print_kanban-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(250px, 1fr));
@@ -343,34 +321,30 @@
   padding: 15px;
 }
 
-/* Task Cards */
 .dashbg .print_task-card {
   background: #ffffff;
   border-radius: 6px;
   padding: 12px;
   margin-bottom: 10px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  border-left: 8px solid ;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-left: 8px solid;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 
 .dashbg .print_task-card:hover {
   transform: translateY(-3px) translateX(4px);
   box-shadow: 0 0 10px 3px #a0caff;
 }
 
-
-/* Status coloring flourishes */
-.dashbg .print_todo .print_task-card { 
+.dashbg .print_todo .print_task-card {
   border: solid #55638c;
   border-width: 1px 1px 1px 8px;
 }
 
-.dashbg .print_progress .print_task-card { 
+.dashbg .print_progress .print_task-card {
   border: solid #bdaa49;
-  border-width: 1px 1px 1px 8px; 
+  border-width: 1px 1px 1px 8px;
 }
 
 .dashbg .print_completed .print_task-card {
@@ -378,13 +352,11 @@
   border-width: 1px 1px 1px 8px;
 }
 
-.dashbg .print_over .print_task-card { 
+.dashbg .print_over .print_task-card {
   border: solid #a86969;
   border-width: 1px 1px 1px 8px;
 }
 
-
-/* List System */
 .dashbg .print_list-layout {
   display: flex;
   flex-direction: column;
@@ -397,27 +369,22 @@
   gap: 8px;
 }
 
-/* For the Task Title */
 .print_task-card h4 {
   margin: 0 0 6px 0;
   font-size: 1rem;
   overflow-wrap: break-word;
   overflow: hidden;
   color: black;
-  /* 1. Official Standard Property */
   line-clamp: 1;
 
-  /* 2. Legacy Webkit fallback (silences warnings by providing standard alternatives) */
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
 
-  /* 3. Safe fallback for strict validation environments */
   line-height: 1.2em;
-  max-height: 1.2em; 
+  max-height: 1.2em;
 }
 
-/* For the Task Description / Note */
 .print_task-card .task-note {
   font-size: 0.85rem;
   color: #4a5568;
@@ -425,32 +392,27 @@
   overflow-wrap: break-word;
   overflow: hidden;
 
-  /* 1. Official Standard Property */
   line-clamp: 3;
 
-  /* 2. Legacy Webkit fallback */
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 
-  /* 3. Safe fallback: line-height * 3 lines */
   line-height: 1.3em;
-  max-height: 3.9em; 
+  max-height: 3.9em;
 }
 
 .print_kanban-column h3 {
   margin-bottom: 10px;
 }
 
-/* --- TO DO SECTION --- */
 .dashbg .print_list-section.print_todo h3 {
   border-bottom: 2px solid #55638c;
   padding-bottom: 5px;
   margin-bottom: 6px;
-  color: #55638c; 
+  color: #55638c;
 }
 
-/* --- IN PROGRESS SECTION --- */
 .dashbg .print_list-section.print_progress h3 {
   border-bottom: 2px solid #bdaa49;
   padding-bottom: 5px;
@@ -458,7 +420,6 @@
   color: #bdaa49;
 }
 
-/* --- COMPLETED SECTION --- */
 .dashbg .print_list-section.print_completed h3 {
   border-bottom: 2px solid #5f915d;
   padding-bottom: 5px;
@@ -466,7 +427,6 @@
   color: #5f915d;
 }
 
-/* --- OVER SECTION --- */
 .dashbg .print_list-section.print_over h3 {
   border-bottom: 2px solid #a86969;
   padding-bottom: 5px;
@@ -474,9 +434,8 @@
   color: #a86969;
 }
 
-
 .print_kanban-column.print_todo h3 {
-  color: #55638c; 
+  color: #55638c;
   text-align: center;
 }
 
@@ -497,4 +456,8 @@
 
 .task-date {
   color: black;
+}
+
+.btn-change-name {
+  margin-left: 70px;
 }

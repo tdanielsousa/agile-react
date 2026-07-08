@@ -1,553 +1,562 @@
-/* --- SCOPED VARIÁVEIS E CONFIGURAÇÕES --- */
 .dashbg {
-    /* Light Mode (Default) Variables */
-    --bg-app: #ececec;
-    --bg-card: #ffffff;
-    --sidebar-bg: #1a1d20;
-    --text-main: #2d3748;
-    --text-muted: #686868;
-    --border-color: #e2e8f0;
-    
-    /* Cores dos Status */
-    --blue: #55638c;
-    --green: #5f915d;
-    --yellow: #bdaa49;
-    --red: #a86969;
-    --gray: #2d3138;
-  
-    /* Your existing dashbg layout configurations */
-    background: var(--bg-app); /* Uses the internal light-mode background */
-    color: var(--text-main);   /* Uses the internal light-mode text */
-  
-    border-radius: 24px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    width: 90%;
-    height: 90%;
-    box-sizing: border-box;
-    text-align: left;
-    transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out, background-color 0.3s;
-    overflow: hidden;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  /* Scoped Dark Mode (Triggers when .dark-mode is applied directly to .dashbg) */
-  .dashbg.dark-mode {
-    --bg-app: #0f111a;
-    --bg-card: #161925;
-    --sidebar-bg: #090a0f;
-    --text-main: #f7fafc;
-    --text-muted: #686868;
-    --border-color: #2d3748;
-  }
-  
-  /* Ensure child elements inside .dashbg inherit box-sizing cleanly */
-  .dashbg *, .dashbg *::before, .dashbg *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Modify the app container layout to inherit height from .dashbg */
-  .app-container {
-    display: flex;
-    height: 100%; 
-    width: 100%;
-  }
-  
-  .main-content {
-    flex: 1;
-    padding: 24px;
-    height: 100%;
-    overflow-y: hidden;
-    display: flex;
-    flex-direction: column;
-  }
+  --bg-app: #ececec;
+  --bg-card: #ffffff;
+  --sidebar-bg: #1a1d20;
+  --text-main: #2d3748;
+  --text-muted: #686868;
+  --border-color: #e2e8f0;
 
+  --blue: #55638c;
+  --green: #5f915d;
+  --yellow: #bdaa49;
+  --red: #a86969;
+  --gray: #2d3138;
 
-/* --- SIDEBAR --- */
+  background: var(--bg-app);
+  color: var(--text-main);
+  border-radius: 24px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  width: 90%;
+  height: 90%;
+  box-sizing: border-box;
+  text-align: left;
+  transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out,
+    background-color 0.3s;
+  overflow: hidden;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashbg.dark-mode {
+  --bg-app: #0f111a;
+  --bg-card: #161925;
+  --sidebar-bg: #090a0f;
+  --text-main: #f7fafc;
+  --text-muted: #686868;
+  --border-color: #2d3748;
+}
+
+.dashbg *,
+.dashbg *::before,
+.dashbg *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.main-content {
+  flex: 1;
+  padding: 24px;
+  height: 100%;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
 .sidebar {
-    width: 260px;
-    background-color: var(--sidebar-bg);
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 24px;
-  }
-  
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 24px;
-  }
-  
-  .create-btn-group {
-    display: flex;
-    gap: 2px;
-    margin-bottom: 30px;
-  }
-  
-  .btn-create {
-    flex: 1;
-    background-color: #0a14a3;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 4px 0 0 4px;
-    cursor: pointer;
-    font-weight: 500;
-  }
-  
-  .btn-plus {
-    background-color: #0a14a3;
-    color: white;
-    border: none;
-    padding: 10px 14px;
-    border-radius: 0 4px 4px 0;
-    cursor: pointer;
-    opacity: 0.9;
-  }
-  
-  .nav-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  
-  .nav-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: #a0aec0;
-    text-decoration: none;
-    padding: 10px 12px;
-    border-radius: 6px;
-    font-size: 0.95rem;
-    transition: all 0.2s;
-  }
-  
-  .nav-item:hover, .nav-item.active {
-    background-color: rgba(255,255,255,0.1);
-    color: #fff;
-  }
+  width: 260px;
+  background-color: var(--sidebar-bg);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+}
 
-  .nav-item.active {
-    border-left: 5px solid rgb(10, 20, 163);
-  }
-  
-  .sidebar-footer {
-    font-size: 0.85rem;
-    color: #718096;
-  }
-  
-  .user-profile {
-    margin-bottom: 15px;
-  }
-  
-  .username {
-    color: #e2e8f0;
-    font-weight: 500;
-    display: flex;
-  justify-content: center; /* Centers horizontally */
-  align-items: center;     /* Centers vertically */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.create-btn-group {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 30px;
+}
+
+.btn-create {
+  flex: 1;
+  background-color: #0a14a3;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px 0 0 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-plus {
+  background-color: #0a14a3;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #a0aec0;
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.nav-item.active {
+  border-left: 5px solid rgb(10, 20, 163);
+}
+
+.sidebar-footer {
+  font-size: 0.85rem;
+  color: #718096;
+}
+
+.user-profile {
+  margin-bottom: 15px;
+}
+
+.username {
+  color: #e2e8f0;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 1rem;
-  }
-  
-  .logout {
-    color: #a0aec0;
-    text-decoration: none;
-    display: flex;
-  justify-content: center; /* Centers horizontally */
-  align-items: center;     /* Centers vertically */
-  }
-  
-  .theme-toggle {
-    margin: 15px 0;
-    cursor: pointer;
-    color: #cbd5e0;
-    display: flex;
-  justify-content: center; /* Centers horizontally */
-  align-items: center;     /* Centers vertically */
-  }
-  
-  .theme-toggle:hover {
-    color: white;
-  }
-  
-  .date-time {
-    font-size: 0.8rem;
-    display: flex;
-  justify-content: center; /* Centers horizontally */
-  align-items: center;     /* Centers vertically */
-  }
-  
-  
-  .main-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-  }
-  
-  .main-header h1 {
-    font-size: 1.75rem;
-    font-weight: 700;
-  }
-  
-  .language-selector {
-    border: 1px solid var(--border-color);
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    cursor: pointer;
-    background: var(--bg-card);
-  }
-  
-  /* METRIC CARDS */
-  .metrics-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin-bottom: 30px;
-  }
-  
-  .card-metric {
-    padding: 24px;
-    border-radius: 8px;
-    color: white;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  }
-  
-  .card-metric.blue { background-color: #55638c; color: #fff; }
-  .card-metric.green { background-color: #5f915d; color: #fff; }
-  .card-metric.yellow { background-color: #bdaa49; color: #fff; }
-  .card-metric.red { background-color: #a86969; color: #fff; }
-  
-  .metric-value {
-    font-size: 2.2rem;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 4px;
-  }
-  
-  .metric-label {
-    font-size: 1rem;
-    text-align: center;
-  }
-  
-  /* GRID LAYOUT FOR CHARTS & LISTS */
-  .content-grid {
-    display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: 25px;
-    overflow-y: auto;
-    flex: 1;
-  }
-  
-  @media (max-width: 1024px) {
-    .content-grid { grid-template-columns: 1fr; }
-  }
-  
-  .content-card {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 24px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-    overflow-y: auto;
-  }
+}
 
-  .content-card.create {
-   max-width: 450px;
-   max-height: 340px;
-  }
-  
-  .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .card-header h2 {
-    font-size: 1.1rem;
-    font-weight: 600;
-  }
-  
-  .view-all {
-    font-size: 0.9rem;
-    color: #01f;
-    text-decoration: none;
+.logout {
+  color: #a0aec0;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  }
-  
-  /* PROJECTS LIST & PROGRESS BARS */
-  .projects-list {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .project-item {
-    border-bottom: 1px solid var(--border-color);
-    transition: background-color 1s ease;
-    margin-bottom: 5px;
-    padding:5px;
-    border-radius: 5px;
-  }
-  
-  .project-item:hover {
-    background-color: #D1CFFF;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+.theme-toggle {
+  margin: 15px 0;
+  cursor: pointer;
+  color: #cbd5e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .project-item.no-border {
-    border-bottom: none;
-  }
-  
-  .project-info {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.9rem;
-    margin-bottom: 8px;
-  }
-  
-  .project-name {
-    font-weight: 600;
-  }
+.theme-toggle:hover {
+  color: white;
+}
 
-  .project-stat {
-    font-weight: 600;
-    font-size: 0.9rem;
-    border: 1px solid #00f;
-    padding: 0px 6px 0px 6px;
-    border-radius: 6px;
-    margin-left: auto;
-  }
-  
-  .project-stat.blue {
-    color: blue;
-    border: 1px solid blue;
-  }
-  
-  .project-stat.red {
-    color: red;
-    border: 1px solid red;
-  }
+.date-time {
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .project-percentage {
-    color: var(--text-muted);
-    margin: 0px 0px 0px 10px;
-  }
-  
-  .progress-bar {
-    height: 24px;
-    background-color: #e2e8f0;
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  
-  body.dark-mode .progress-bar {
-    background-color: #2d3748;
-  }
-  
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
 
-  
-  /* Segmented progress bar logic from prompt notes */
-  .progress-bar.segmented {
-    height: 14px;       /* Reduzimos de 24px para 14px. Fica bem mais discreto e moderno! */
-    border-radius: 6px; /* Bordas arredondadas mais suaves */
-    display: flex;
-    border: 1px solid #999;
-  }
-  .progress-bar.segmented .segment {
-    height: 100%;
-  }
-  .segment.green { background-color: var(--green); }
-  .segment.blue { background-color: var(--blue); }
-  .segment.yellow { background-color: var(--yellow); }
-  .segment.red { background-color: var(--red); }
-  
-  .user-notes-box {
-    margin-top: 12px;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-  }
-  
-  /* RIGHT COLUMN STATS & PIE CHARTS */
-  .right-column {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-  }
-  
-  .stats-card .stats-body {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-  }
-  
-  .stats-labels {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .label-row {
-    display: flex;
-    align-items: center;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-  }
-  
-  .label-row .val {
-    margin-left: auto;
-    color: var(--text-main);
-  }
-  
-  .bullet {
-    width: 12px;
-    height: 12px;
-    border-radius: 3px;
-    display: inline-block;
-    margin-right: 5px;
-    margin-left: 5px;
-  }
-  .bullet.gray { background-color: var(--gray); }
-  .bullet.blue { background-color: var(--blue); }
-  .bullet.yellow { background-color: var(--yellow); }
-  .bullet.green { background-color: var(--green); }
-  .bullet.red { background-color: var(--red); }
-  
-  /* Gráfico em Pizza usando conic-gradient conforme dados (50% Concluído, 30% em progresso, 20% To-do) */
-  .chart-container {
-    width: 120px;
-    height: 120px;
-  }
-  
-  .pie-chart {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    
-    /* Sequential degree stops using your percentage properties */
-    --stop1: calc(var(--todo) * 3.6deg);
-    --stop2: calc((var(--todo) + var(--progress)) * 3.6deg);
-    --stop3: calc((var(--todo) + var(--progress) + var(--completed)) * 3.6deg);
-  
-    /* Conic gradient using your custom brand palette */
-    background: conic-gradient(
-      var(--blue) 0deg var(--stop1),
-      var(--yellow) var(--stop1) var(--stop2),
-      var(--green) var(--stop2) var(--stop3),
-      var(--red) var(--stop3) 360deg
-    );
-    transition: background 0.3s ease;
-    margin-left: 10px;
-  }
-  
-  /* Fallback state when a user has no active tasks assigned */
-  .pie-chart.no-tasks {
-    background: var(--gray);
-  }
+.main-header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
 
-  /* Container das tags */
-  .project-badges {
-    display: flex;
-    flex-wrap: wrap;   /* Quebra linha suavemente se a tela encolher */
-    gap: 8px;          /* Espaçamento perfeito entre cada badge */
-    margin-top: 12px;  /* Afasta a barra do bloco de badges */
-  }
-  
-  /* Estilo base do Badge/Tag */
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 4px 10px;    /* Respiro interno nas laterais */
-    font-size: 0.75rem;   /* Tamanho sutil e moderno */
-    font-weight: 500;
-    border-radius: 4px;   /* Cantos levemente arredondados combinando com a UI */
-    white-space: nowrap;  /* Garante que o texto de um badge não quebre sozinho */
-  }
-  
-  /* Destaca o número dentro do badge */
-  .badge strong {
-    margin-right: 5px;    /* Afasta o número do texto */
-    font-weight: 800;
-  }
-  
-  /* Cores de fundo e do texto para alto contraste */
-  .badge.blue { 
-    background-color: rgba(59, 130, 246, 0.15); 
-    color: #1e40af; 
-  }
-  .badge.yellow { 
-    background-color: rgba(234, 179, 8, 0.2); 
-    color: #854d0e; 
-  }
-  .badge.green { 
-    background-color: rgba(16, 185, 129, 0.15); 
-    color: #065f46; 
-  }
-  .badge.red { 
-    background-color: rgba(239, 68, 68, 0.15); 
-    color: #991b1b; 
-  }
-  
-  /* --- AJUSTE COMPATÍVEL COM MODO ESCURO (Opcional) --- */
-  body.dark-mode .badge.blue { color: #60a5fa; background-color: rgba(59, 130, 246, 0.25); }
-  body.dark-mode .badge.yellow { color: #fef08a; background-color: rgba(234, 179, 8, 0.25); }
-  body.dark-mode .badge.green { color: #34d399; background-color: rgba(16, 185, 129, 0.25); }
-  body.dark-mode .badge.red { color: #f87171; background-color: rgba(239, 68, 68, 0.25); }
-  
-  /* O container que força um item para cada ponta */
-  .dates-container {
-    display: flex;
-    justify-content: space-between; /* Empurra o primeiro para a esquerda e o segundo para a direita */
-    align-items: center;
-    width: 100%;
-    margin-top: 12px;               /* Dá um espaço elegante abaixo dos badges */
-  }
-  
-  /* Estilo para ambos os textos (seguindo o padrão cinza sutil da sua imagem) */
-  .date-start, .date-end {
-    font-size: 0.8rem;
-    color: #686868;                 /* Cinza claro discreto */
-    font-family: inherit;
-  }
-  
-  /* Base styles for your cards (ensure these exist) */
+.language-selector {
+  border: 1px solid var(--border-color);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  background: var(--bg-card);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
 .card-metric {
-  /* ... your existing styles (background, padding, border-radius, etc.) ... */
-  
-  /* 1. Establish the base shadow and a smooth transition */
+  padding: 24px;
+  border-radius: 8px;
+  color: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.card-metric.blue {
+  background-color: #55638c;
+  color: #fff;
+}
+.card-metric.green {
+  background-color: #5f915d;
+  color: #fff;
+}
+.card-metric.yellow {
+  background-color: #bdaa49;
+  color: #fff;
+}
+.card-metric.red {
+  background-color: #a86969;
+  color: #fff;
+}
+
+.metric-value {
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.metric-label {
+  font-size: 1rem;
+  text-align: center;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 25px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+@media (max-width: 1024px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.content-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  overflow-y: auto;
+}
+
+.content-card.create {
+  max-width: 450px;
+  max-height: 340px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.card-header h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.view-all {
+  font-size: 0.9rem;
+  color: #01f;
+  text-decoration: none;
+}
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-item {
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 1s ease;
+  margin-bottom: 5px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.project-item:hover {
+  background-color: #d1cfff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.project-item {
+  border-bottom: none;
+}
+
+.project-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.project-name {
+  font-weight: 600;
+}
+
+.project-stat {
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid #00f;
+  padding: 0px 6px 0px 6px;
+  border-radius: 6px;
+  margin-left: auto;
+}
+
+.project-stat.blue {
+  color: blue;
+  border: 1px solid blue;
+}
+
+.project-stat.red {
+  color: red;
+  border: 1px solid red;
+}
+
+.project-percentage {
+  color: var(--text-muted);
+  margin: 0px 0px 0px 10px;
+}
+
+.progress-bar {
+  height: 24px;
+  background-color: #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+body.dark-mode .progress-bar {
+  background-color: #2d3748;
+}
+
+.progress-bar.segmented {
+  height: 14px;
+  border-radius: 6px;
+  display: flex;
+  border: 1px solid #999;
+}
+.progress-bar.segmented .segment {
+  height: 100%;
+}
+.segment.green {
+  background-color: var(--green);
+}
+.segment.blue {
+  background-color: var(--blue);
+}
+.segment.yellow {
+  background-color: var(--yellow);
+}
+.segment.red {
+  background-color: var(--red);
+}
+
+.user-notes-box {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.stats-card .stats-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.stats-labels {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.label-row {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.label-row .val {
+  margin-left: auto;
+  color: var(--text-main);
+}
+
+.bullet {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  display: inline-block;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.bullet.gray {
+  background-color: var(--gray);
+}
+.bullet.blue {
+  background-color: var(--blue);
+}
+.bullet.yellow {
+  background-color: var(--yellow);
+}
+.bullet.green {
+  background-color: var(--green);
+}
+.bullet.red {
+  background-color: var(--red);
+}
+
+.chart-container {
+  width: 120px;
+  height: 120px;
+}
+
+.pie-chart {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+
+  --stop1: calc(var(--todo) * 3.6deg);
+  --stop2: calc((var(--todo) + var(--progress)) * 3.6deg);
+  --stop3: calc((var(--todo) + var(--progress) + var(--completed)) * 3.6deg);
+
+  background: conic-gradient(
+    var(--blue) 0deg var(--stop1),
+    var(--yellow) var(--stop1) var(--stop2),
+    var(--green) var(--stop2) var(--stop3),
+    var(--red) var(--stop3) 360deg
+  );
+  transition: background 0.3s ease;
+  margin-left: 10px;
+}
+
+.pie-chart.no-tasks {
+  background: var(--gray);
+}
+
+.project-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.badge strong {
+  margin-right: 5px;
+  font-weight: 800;
+}
+
+.badge.blue {
+  background-color: rgba(59, 130, 246, 0.15);
+  color: #1e40af;
+}
+.badge.yellow {
+  background-color: rgba(234, 179, 8, 0.2);
+  color: #854d0e;
+}
+.badge.green {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #065f46;
+}
+.badge.red {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: #991b1b;
+}
+
+body.dark-mode .badge.blue {
+  color: #60a5fa;
+  background-color: rgba(59, 130, 246, 0.25);
+}
+body.dark-mode .badge.yellow {
+  color: #fef08a;
+  background-color: rgba(234, 179, 8, 0.25);
+}
+body.dark-mode .badge.green {
+  color: #34d399;
+  background-color: rgba(16, 185, 129, 0.25);
+}
+body.dark-mode .badge.red {
+  color: #f87171;
+  background-color: rgba(239, 68, 68, 0.25);
+}
+
+.dates-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.date-start,
+.date-end {
+  font-size: 0.8rem;
+  color: #686868;
+  font-family: inherit;
+}
+
+.card-metric {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* 2. The Pop-Up Effect on Hover */
 .card-metric:hover {
-  /* Moves the card up by 6 pixels */
-  transform: translateY(-6px); 
-  
-  /* Makes the shadow deeper and softer to simulate height */
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06); 
+  transform: translateY(-6px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
 }
 
 .badge {
-  /* Set up the smooth transition on the badges */
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
 }
 
 .badge:hover {
-  transform: translateY(-3px); /* Slightly less lift since badges are smaller */
+  transform: translateY(-3px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
 
 .fade-in {
   animation: fadeIn 0.25s ease-out forwards;
@@ -560,7 +569,7 @@
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(4px); /* Subtle lift effect */
+    transform: translateY(4px);
   }
   to {
     opacity: 1;
@@ -573,35 +582,34 @@
   gap: 25px;
 }
 
-/* 1. Target Webkit browsers (Chrome, Safari, Edge, Opera) */
-
-/* The overall width/height of the scrollbar space */
 ::-webkit-scrollbar {
-  width: 8px;               /* Width of vertical scrollbar */
-  height: 8px;              /* Height of horizontal scrollbar */
+  width: 8px;
+  height: 8px;
 }
 
-/* The background track/runway behind the moving bar */
 ::-webkit-scrollbar-track {
-  background: transparent;  /* Keeps it clean, or use a soft gray like #f1f1f1 */
+  background: transparent;
   border-radius: 10px;
 }
 
-/* The actual draggable handle bar */
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;      /* A sleek, modern muted gray (Slate 300) */
-  border-radius: 10px;      /* Gives it smooth rounded capsule corners */
-  border: 2px solid transparent; /* Acts as faux padding if track has color */
+  background: #cbd5e1;
+  border-radius: 10px;
+  border: 2px solid transparent;
 }
 
-/* Change thumb color slightly on hover to look interactive */
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;      /* Slate 400 when hovered */
+  background: #94a3b8;
 }
 
+html,
+*,
+body {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
 
-/* 2. Target Firefox (Standard CSS properties) */
-html, *, body {
-  scrollbar-width: thin;          /* Makes it thin instead of chunky */
-  scrollbar-color: #cbd5e1 transparent; /* thumb color + track color */
+.test-box {
+  color: red;
+  display: block;
 }

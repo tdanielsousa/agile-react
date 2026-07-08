@@ -1,53 +1,68 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
 
 * {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
 }
 
 #root {
   height: 100%;
 }
-html { 
-  width: 100%; 
-  height: 100%; 
+html {
+  width: 100%;
+  height: 100%;
 }
 
-body { 
-  text-align: center; 
-  margin: 0px; 
-  padding: 0px; 
-  height: 100%; 
-  color: #333;    
-  background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);    
-  background-size: 400% 400%;    
-  -webkit-animation: Gradient 9s ease infinite;    
-  -moz-animation: Gradient 9s ease infinite;    
+body {
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  color: #333;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 9s ease infinite;
+  -moz-animation: Gradient 9s ease infinite;
   animation: Gradient 9s ease infinite;
 }
 
-@-webkit-keyframes Gradient {    
-  0% {background-position: 0% 50%}    
-  50% {background-position: 100% 50%}    
-  100% {background-position: 0% 50%}    
-}    
-@-moz-keyframes Gradient {    
-  0% {background-position: 0% 50%}    
-  50% {background-position: 100% 50%}    
-  100% {background-position: 0% 50%}    
-}    
-@keyframes Gradient {    
-  0% {background-position: 0% 50%}    
-  50% {background-position: 100% 50%}    
-  100% {background-position: 0% 50%}    
+@-webkit-keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@-moz-keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-/* main body gradient end */
-
-.vh { 
-  height: 100%; 
-  align-items: center; 
-  display: flex; 
+.vh {
+  height: 100%;
+  align-items: center;
+  display: flex;
   justify-content: center;
 }
 
@@ -55,7 +70,7 @@ body {
   background: white;
   padding: 40px;
   border-radius: 24px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   max-width: 400px;
   width: 90%;
   box-sizing: border-box;
@@ -68,10 +83,10 @@ body {
   letter-spacing: -0.7px;
   margin-top: 1px;
   margin-bottom: 12px;
-  background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);    
-  background-size: 400% 400%;    
-  -webkit-animation: Gradient 9s ease infinite;    
-  -moz-animation: Gradient 9s ease infinite;    
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 9s ease infinite;
+  -moz-animation: Gradient 9s ease infinite;
   animation: Gradient 9s ease infinite;
   -webkit-background-clip: text;
   background-clip: text;
@@ -81,7 +96,7 @@ body {
 
 .brand-tagline {
   font-size: 0.95rem;
-  color: #64748b; /* Soft gray for a modern, readable look */
+  color: #64748b;
   line-height: 1.5;
   font-weight: 500;
   margin-top: 1px;
@@ -98,9 +113,8 @@ body {
   display: inline-block;
 }
 
-/* Subtle accent line under Sign In */
 .form-title::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -6px;
   left: 50%;
