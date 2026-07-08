@@ -1,20 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import Toolbar from './Toolbar';
-import Workspace from './Workspace';
+import React, { useState, useEffect } from "react";
+import Toolbar from "./Toolbar";
+import Workspace from "./Workspace";
 
 function Editor({ user, projectId, setProjectId, currentView, setView }) {
   const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [layout, setLayout] = useState('kanban'); 
-  
-  // Track dataset updates to trigger re-fetches
+  const [layout, setLayout] = useState("kanban");
+
   const [tasksVersion, setTasksVersion] = useState(0);
 
   const handleTaskAdded = () => {
-    setTasksVersion(prev => prev + 1);
+    setTasksVersion((prev) => prev + 1);
   };
 
-  // Fetch project execution when selection context changes
   useEffect(() => {
     if (!projectId) {
       setProject(null);
@@ -25,7 +23,7 @@ function Editor({ user, projectId, setProjectId, currentView, setView }) {
 
     fetch(`/get-project?projectId=${projectId}`)
       .then((res) => {
-        if (!res.ok) throw new Error('Failed to fetch project');
+        if (!res.ok) throw new Error("Failed to fetch project");
         return res.json();
       })
       .then((data) => {
@@ -40,7 +38,6 @@ function Editor({ user, projectId, setProjectId, currentView, setView }) {
       });
   }, [projectId]);
 
-  // Handler to toggle project status (ACTIVE / OVER)
   const handleStatusChange = (e, newStatus) => {
     e.preventDefault();
     if (!project) return;
@@ -48,13 +45,13 @@ function Editor({ user, projectId, setProjectId, currentView, setView }) {
     const previousStatus = project.status;
     setProject({ ...project, status: newStatus });
 
-    fetch('/update-project-status', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    fetch("/update-project-status", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ projectId, status: newStatus }),
     })
       .then((res) => {
-        if (!res.ok) throw new Error('Failed to update status');
+        if (!res.ok) throw new Error("Failed to update status");
         return res.json();
       })
       .catch((err) => {
@@ -63,42 +60,47 @@ function Editor({ user, projectId, setProjectId, currentView, setView }) {
       });
   };
 
-  // Handler to delete project completely
   const handleDeleteProject = (e) => {
     e.preventDefault();
-    
-    const confirmDelete = window.confirm(`Are you sure you want to delete "${project?.name}"? This will also remove its tasks.`);
+
+    const confirmDelete = window.confirm(
+      `Are you sure you want to delete "${project?.name}"? This will also remove its tasks.`
+    );
     if (!confirmDelete) return;
 
-    fetch('/delete-project', {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
+    fetch("/delete-project", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ projectId }),
     })
       .then((res) => {
-        if (!res.ok) throw new Error('Failed to delete project');
+        if (!res.ok) throw new Error("Failed to delete project");
         return res.json();
       })
       .then(() => {
         setProjectId(null);
-        setView('projects');
+        setView("projects");
       })
       .catch((err) => {
         console.error("Deletion error:", err);
         alert("Could not delete project.");
       });
   };
-  
-  // Guard Clauses for empty selections or network loading
+
   if (!projectId) {
     return (
       <div className="editor-container empty-state">
-        <p className="empty-message">You haven't selected a project, please select one.</p>
-        <a 
-          href="#" 
-          className={`view-all ${currentView === 'projects' ? 'active' : ''}`}
-          onClick={(e) => { e.preventDefault(); setView('projects'); }}
-        > 
+        <p className="empty-message">
+          You haven't selected a project, please select one.
+        </p>
+        <a
+          href="#"
+          className={`view-all ${currentView === "projects" ? "active" : ""}`}
+          onClick={(e) => {
+            e.preventDefault();
+            setView("projects");
+          }}
+        >
           Go to Project List ➔
         </a>
       </div>
@@ -116,23 +118,23 @@ function Editor({ user, projectId, setProjectId, currentView, setView }) {
   }
 
   return (
-    <div className="editor-container">   
-      <Toolbar 
-        user={user} 
+    <div className="editor-container">
+      <Toolbar
+        user={user}
         project={project}
         projectId={projectId}
         layout={layout}
         setLayout={setLayout}
         onStatusChange={handleStatusChange}
         onDeleteProject={handleDeleteProject}
-        onRefreshData={handleTaskAdded} 
+        onRefreshData={handleTaskAdded}
       />
-      
+
       <Workspace
-        user={user}  
+        user={user}
         project={project}
         layout={layout}
-        tasksVersion={tasksVersion} 
+        tasksVersion={tasksVersion}
       />
     </div>
   );

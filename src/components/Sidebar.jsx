@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import { createPortal } from 'react-dom';
-import Creator from './Creator';
-import DateTimeDisplay from './DateTimeDisplay';
+import React, { useState } from "react";
+import { createPortal } from "react-dom";
+import Creator from "./Creator";
+import DateTimeDisplay from "./DateTimeDisplay";
 
 function Sidebar({ onLogout, toggleDarkMode, user, currentView, setView }) {
-  // Local state to control the modal overlay
   const [isCreatorOpen, setIsCreatorOpen] = useState(false);
 
   return (
@@ -13,66 +12,83 @@ function Sidebar({ onLogout, toggleDarkMode, user, currentView, setView }) {
         <div className="logo">
           <h1 className="brand-title">Agile</h1>
         </div>
-        
-        {/* Buttons now control the local modal state instead of full-screen routing */}
+
         <div className="create-btn-group">
-          <button 
-            className="btn-create" 
-            onClick={() => setIsCreatorOpen(true)}
-          >
+          <button className="btn-create" onClick={() => setIsCreatorOpen(true)}>
             Create New
           </button>
-          <button 
-            className="btn-plus" 
-            onClick={() => setIsCreatorOpen(true)}
-          >
+          <button className="btn-plus" onClick={() => setIsCreatorOpen(true)}>
             +
           </button>
         </div>
-              
+
         <nav className="nav-menu">
-          <a 
-            href="#" 
-            className={`nav-item ${currentView === 'dashboard' ? 'active' : ''}`}
-            onClick={(e) => { e.preventDefault(); setView('dashboard'); }}
+          <a
+            href="#"
+            className={`nav-item ${
+              currentView === "dashboard" ? "active" : ""
+            }`}
+            onClick={(e) => {
+              e.preventDefault();
+              setView("dashboard");
+            }}
           >
             <span className="icon">📊</span> Dashboard
           </a>
 
-          <a 
-            href="#" 
-            className={`nav-item ${currentView === 'projects' ? 'active' : ''}`}
-            onClick={(e) => { e.preventDefault(); setView('projects'); }}
+          <a
+            href="#"
+            className={`nav-item ${currentView === "projects" ? "active" : ""}`}
+            onClick={(e) => {
+              e.preventDefault();
+              setView("projects");
+            }}
           >
             <span className="icon">📋</span> Project List
           </a>
 
-          <a 
-            href="#" 
-            className={`nav-item ${currentView === 'editor' ? 'active' : ''}`}
-            onClick={(e) => { e.preventDefault(); setView('editor'); }}
+          <a
+            href="#"
+            className={`nav-item ${currentView === "editor" ? "active" : ""}`}
+            onClick={(e) => {
+              e.preventDefault();
+              setView("editor");
+            }}
           >
             <span className="icon">✏️</span> Editor
           </a>
         </nav>
       </div>
-      
+
       <div className="sidebar-footer">
         <div className="user-profile">
           <div className="username">{user.name}</div>
-          <a href="#" onClick={(e) => { e.preventDefault(); onLogout(); }} className="logout">[ Logout ]</a>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              onLogout();
+            }}
+            className="logout"
+          >
+            [ Logout ]
+          </a>
         </div>
         <div className="theme-toggle" onClick={toggleDarkMode}>
-          <span className="icon">🌓</span> <span className="toggle-text">Toggle Light/Dark Mode</span>
+          <span className="icon">🌓</span>{" "}
+          <span className="toggle-text">Toggle Light/Dark Mode</span>
         </div>
-        <div className="date-time"> <DateTimeDisplay /> </div>
+        <div className="date-time">
+          {" "}
+          <DateTimeDisplay />{" "}
+        </div>
       </div>
 
-      {/* React Portal shoots the modal element out directly to document.body */}
-      {isCreatorOpen && createPortal(
-        <Creator user={user} onClose={() => setIsCreatorOpen(false)} />,
-        document.body
-      )}
+      {isCreatorOpen &&
+        createPortal(
+          <Creator user={user} onClose={() => setIsCreatorOpen(false)} />,
+          document.body
+        )}
     </aside>
   );
 }

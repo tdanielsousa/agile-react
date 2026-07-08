@@ -3,18 +3,17 @@ import { useState } from "react";
 function LoginForm({ onLogin, onToggleRegister }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(""); // 1. Local error state
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(""); // Clear previous errors
+    setError("");
 
     if (!username || !password) {
       setError("Please fill in both fields.");
       return;
     }
 
-    // 2. Call login and catch any errors passed back from App.jsx
     try {
       await onLogin(username, password);
     } catch (err) {
@@ -26,7 +25,6 @@ function LoginForm({ onLogin, onToggleRegister }) {
     <>
       <h2 className="form-title">Sign In</h2>
 
-      {/* 3. Render the same on-screen error banner if there is an error */}
       {error && <div className="error-message">{error}</div>}
 
       <form onSubmit={handleSubmit} className="login-form">
@@ -53,7 +51,7 @@ function LoginForm({ onLogin, onToggleRegister }) {
 
       <button onClick={onToggleRegister} className="toggle-btn">
         Don't have an account? <span className="inline-red-btn">Register</span>
-    </button>
+      </button>
     </>
   );
 }

@@ -1,25 +1,23 @@
-import React, { useState } from 'react';
-import Sidebar from './Sidebar';
-import MetricCards from './MetricCards';
-import ActiveProjects from './ActiveProjects';
-import TasksOverview from './TasksOverview';
-import ProjectStats from './ProjectStats';
-import ProjectList from './ProjectList';
-import Creator from './Creator';
-import Editor from './Editor';
-import App from '../App';
+import React, { useState } from "react";
+import Sidebar from "./Sidebar";
+import MetricCards from "./MetricCards";
+import ActiveProjects from "./ActiveProjects";
+import TasksOverview from "./TasksOverview";
+import ProjectStats from "./ProjectStats";
+import ProjectList from "./ProjectList";
+import Creator from "./Creator";
+import Editor from "./Editor";
+import App from "../App";
 import "../dashboard.css";
-
 
 function Dashboard({ user, onLogout }) {
   const [darkMode, setDarkMode] = useState(false);
-  const [currentView, setCurrentView] = useState('dashboard');
-  
-  // 🔥 ADDED: State to track which project is currently being edited
-  const [selectedProjectId, setSelectedProjectId] = useState(null); 
+  const [currentView, setCurrentView] = useState("dashboard");
 
-  document.addEventListener('click', (e) => {
-    if (e.target.tagName === 'A' && e.target.getAttribute('href') === '#') {
+  const [selectedProjectId, setSelectedProjectId] = useState(null);
+
+  document.addEventListener("click", (e) => {
+    if (e.target.tagName === "A" && e.target.getAttribute("href") === "#") {
       e.preventDefault();
     }
   });
@@ -28,29 +26,31 @@ function Dashboard({ user, onLogout }) {
     return <App />;
   }
 
-  
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
 
   const getHeaderTitle = () => {
     switch (currentView) {
-      case 'projects': return 'Project List';
-      case 'creator': return 'Project Creator';
-      case 'editor': return 'Project Editor';
-      default: return 'Dashboard';
+      case "projects":
+        return "Project List";
+      case "creator":
+        return "Project Creator";
+      case "editor":
+        return "Project Editor";
+      default:
+        return "Dashboard";
     }
   };
 
   return (
     <div className="vh">
-      <div className={`dashbg ${darkMode ? 'dark-mode' : ''}`}>
+      <div className={`dashbg ${darkMode ? "dark-mode" : ""}`}>
         <div className="app-container">
-          
-          <Sidebar 
-            onLogout={onLogout} 
-            toggleDarkMode={toggleDarkMode} 
-            user={user} 
+          <Sidebar
+            onLogout={onLogout}
+            toggleDarkMode={toggleDarkMode}
+            user={user}
             currentView={currentView}
             setView={setCurrentView}
           />
@@ -63,27 +63,25 @@ function Dashboard({ user, onLogout }) {
               </div>
             </header>
 
-            {/* Render views dynamically with animations directly on the layout blocks */}
-            {currentView === 'dashboard' && (
+            {currentView === "dashboard" && (
               <>
                 <div key="metrics" className="fade-in">
                   <MetricCards user={user} />
                 </div>
-                
+
                 <div className="content-grid">
                   <div key="active-projects" className="fade-in overflow">
-                    {/* 🔥 MODIFIED: Added onSelectProject callback */}
-                    <ActiveProjects 
-                      user={user} 
+                    <ActiveProjects
+                      user={user}
                       currentView={currentView}
-                      setView={setCurrentView} 
+                      setView={setCurrentView}
                       onSelectProject={(id) => {
                         setSelectedProjectId(id);
-                        setCurrentView('editor');
+                        setCurrentView("editor");
                       }}
                     />
                   </div>
-                  
+
                   <div key="stats-column" className="right-column fade-in">
                     <TasksOverview user={user} />
                     <ProjectStats user={user} />
@@ -92,41 +90,38 @@ function Dashboard({ user, onLogout }) {
               </>
             )}
 
-            {currentView === 'projects' && (
+            {currentView === "projects" && (
               <div key="project-list" className="content-card fade-in">
-                <ProjectList  
-                  user={user} 
+                <ProjectList
+                  user={user}
                   currentView={currentView}
-                  setView={setCurrentView}  
-                  // 🔥 ADDED: Pass down the callback function to handle project clicks
+                  setView={setCurrentView}
                   onSelectProject={(id) => {
                     setSelectedProjectId(id);
-                    setCurrentView('editor');
+                    setCurrentView("editor");
                   }}
                 />
               </div>
             )}
 
-            {currentView === 'creator' && (
+            {currentView === "creator" && (
               <div key="creator-view" className="content-card create fade-in">
                 <Creator user={user} />
               </div>
             )}
 
-            {currentView === 'editor' && (
+            {currentView === "editor" && (
               <div key="editor-view" className="content-card fade-in">
-                {/* 🔥 MODIFIED: Pass down the selected ID to the Editor */}
-                <Editor 
-                user={user} 
-                projectId={selectedProjectId}
-                setProjectId={setSelectedProjectId} 
-                currentView={currentView}
-                setView={setCurrentView}  
+                <Editor
+                  user={user}
+                  projectId={selectedProjectId}
+                  setProjectId={setSelectedProjectId}
+                  currentView={currentView}
+                  setView={setCurrentView}
                 />
               </div>
             )}
           </main>
-
         </div>
       </div>
     </div>

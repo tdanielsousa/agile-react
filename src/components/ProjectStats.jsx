@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 function ProjectStats({ user }) {
   const [stats, setStats] = useState({
@@ -7,11 +7,10 @@ function ProjectStats({ user }) {
     progress: 0,
     completed: 0,
     overdue: 0,
-    // Raw numerical values for CSS variables
     pctTodo: 0,
     pctProgress: 0,
     pctCompleted: 0,
-    pctOverdue: 0
+    pctOverdue: 0,
   });
   const [loading, setLoading] = useState(true);
 
@@ -20,8 +19,12 @@ function ProjectStats({ user }) {
       .then((res) => res.json())
       .then((data) => {
         if (data && !data.error) {
-          const totalTasks = data.todoTasks + data.progressTasks + data.completedTasks + data.overdueTasks;
-          
+          const totalTasks =
+            data.todoTasks +
+            data.progressTasks +
+            data.completedTasks +
+            data.overdueTasks;
+
           if (totalTasks > 0) {
             setStats({
               totalProjects: data.totalProjects,
@@ -29,17 +32,22 @@ function ProjectStats({ user }) {
               progress: data.progressTasks,
               completed: data.completedTasks,
               overdue: data.overdueTasks,
-              // Keep as numbers for pure math logic execution
               pctTodo: (data.todoTasks / totalTasks) * 100,
               pctProgress: (data.progressTasks / totalTasks) * 100,
               pctCompleted: (data.completedTasks / totalTasks) * 100,
-              pctOverdue: (data.overdueTasks / totalTasks) * 100
+              pctOverdue: (data.overdueTasks / totalTasks) * 100,
             });
           } else {
             setStats({
               totalProjects: data.totalProjects,
-              todo: 0, progress: 0, completed: 0, overdue: 0,
-              pctTodo: 0, pctProgress: 0, pctCompleted: 0, pctOverdue: 0
+              todo: 0,
+              progress: 0,
+              completed: 0,
+              overdue: 0,
+              pctTodo: 0,
+              pctProgress: 0,
+              pctCompleted: 0,
+              pctOverdue: 0,
             });
           }
         }
@@ -59,7 +67,8 @@ function ProjectStats({ user }) {
     );
   }
 
-  const hasNoTasks = stats.todo + stats.progress + stats.completed + stats.overdue === 0;
+  const hasNoTasks =
+    stats.todo + stats.progress + stats.completed + stats.overdue === 0;
 
   return (
     <section className="content-card stats-card">
@@ -69,29 +78,38 @@ function ProjectStats({ user }) {
       <div className="stats-body">
         <div className="stats-labels">
           <div className="label-row">
-            <span className="bullet gray"></span> Total Projects <strong className="val">{stats.totalProjects}</strong>
+            <span className="bullet gray"></span> Total Projects{" "}
+            <strong className="val">{stats.totalProjects}</strong>
           </div>
           <div className="label-row">
-            <span className="bullet blue"></span> To-Do ({stats.pctTodo.toFixed(2)}%) <strong className="val">{stats.todo}</strong>
+            <span className="bullet blue"></span> To-Do (
+            {stats.pctTodo.toFixed(2)}%){" "}
+            <strong className="val">{stats.todo}</strong>
           </div>
           <div className="label-row">
-            <span className="bullet yellow"></span> In Progress ({stats.pctProgress.toFixed(2)}%) <strong className="val">{stats.progress}</strong>
+            <span className="bullet yellow"></span> In Progress (
+            {stats.pctProgress.toFixed(2)}%){" "}
+            <strong className="val">{stats.progress}</strong>
           </div>
           <div className="label-row">
-            <span className="bullet green"></span> Completed ({stats.pctCompleted.toFixed(2)}%) <strong className="val">{stats.completed}</strong>
+            <span className="bullet green"></span> Completed (
+            {stats.pctCompleted.toFixed(2)}%){" "}
+            <strong className="val">{stats.completed}</strong>
           </div>
           <div className="label-row">
-            <span className="bullet red"></span> Overdue ({stats.pctOverdue.toFixed(2)}%) <strong className="val">{stats.overdue}</strong>
+            <span className="bullet red"></span> Overdue (
+            {stats.pctOverdue.toFixed(2)}%){" "}
+            <strong className="val">{stats.overdue}</strong>
           </div>
         </div>
-        
+
         <div className="chart-container">
-          <div 
-            className={`pie-chart ${hasNoTasks ? 'no-tasks' : ''}`}
+          <div
+            className={`pie-chart ${hasNoTasks ? "no-tasks" : ""}`}
             style={{
-              '--todo': stats.pctTodo,
-              '--progress': stats.pctProgress,
-              '--completed': stats.pctCompleted
+              "--todo": stats.pctTodo,
+              "--progress": stats.pctProgress,
+              "--completed": stats.pctCompleted,
             }}
           ></div>
         </div>

@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 function MetricCards({ user }) {
   const [metrics, setMetrics] = useState({
     activeProjects: 0,
     completedTasks: 0,
     pendingTasks: 0,
-    overdueTasks: 0
+    overdueTasks: 0,
   });
   const [loading, setLoading] = useState(true);
 
@@ -25,7 +25,11 @@ function MetricCards({ user }) {
   }, []);
 
   if (loading) {
-    return <section className="metrics-grid"><p>Loading metrics...</p></section>;
+    return (
+      <section className="metrics-grid">
+        <p>Loading metrics...</p>
+      </section>
+    );
   }
 
   return (
