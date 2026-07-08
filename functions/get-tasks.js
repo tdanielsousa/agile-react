@@ -6,7 +6,9 @@ export async function onRequestGet(context) {
   const projectId = url.searchParams.get("projectId");
 
   if (!projectId) {
-    return new Response(JSON.stringify({ error: "Missing projectId" }), { status: 400 });
+    return new Response(JSON.stringify({ error: "Missing projectId" }), {
+      status: 400,
+    });
   }
 
   // Initialize your Turso client using Cloudflare environment variables
@@ -25,6 +27,8 @@ export async function onRequestGet(context) {
       headers: { "Content-Type": "application/json" },
     });
   } catch (error) {
-    return new Response(JSON.stringify({ error: error.message }), { status: 500 });
+    return new Response(JSON.stringify({ error: error.message }), {
+      status: 500,
+    });
   }
 }

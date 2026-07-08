@@ -1,24 +1,24 @@
-import { createClient } from '@libsql/client';
+import { createClient } from "@libsql/client";
 
 export async function onRequest(context) {
   const { request, env } = context;
 
   // Setup CORS Headers
   const corsHeaders = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
   };
 
   // Handle preflight requests
-  if (request.method === 'OPTIONS') {
+  if (request.method === "OPTIONS") {
     return new Response(null, { status: 200, headers: corsHeaders });
   }
 
   try {
     // Parse the query parameters from the URL
     const url = new URL(request.url);
-    const userIdParam = url.searchParams.get('userId');
+    const userIdParam = url.searchParams.get("userId");
     const userId = userIdParam ? Number(userIdParam) : 1; // Fallback to user 1 for tests
 
     // Initialize the Turso client using Cloudflare's env context
@@ -45,29 +45,43 @@ export async function onRequest(context) {
       WHERE t.user_id = ? AND p.status = 'ACTIVE';
     `;
 
-    const projectsResult = await client.execute({ sql: projectsQuery, args: [userId] });
-    const tasksResult = await client.execute({ sql: tasksQuery, args: [userId] });
+    const projectsResult = await client.execute({
+      sql: projectsQuery,
+      args: [userId],
+    });
+    const tasksResult = await client.execute({
+      sql: tasksQuery,
+      args: [userId],
+    });
 
     const activeProjects = Number(projectsResult.rows[0]?.activeProjects) || 0;
     const completedTasks = Number(tasksResult.rows[0]?.completedTasks) || 0;
     const pendingTasks = Number(tasksResult.rows[0]?.pendingTasks) || 0;
     const overdueTasks = Number(tasksResult.rows[0]?.overdueTasks) || 0;
 
-    return new Response(JSON.stringify({
-      activeProjects,
-      completedTasks,
-      pendingTasks,
-      overdueTasks
-    }), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json', ...corsHeaders }
-    });
-
+    return new Response(
+      JSON.stringify({
+        activeProjects,
+        completedTasks,
+        pendingTasks,
+        overdueTasks,
+      }),
+      {
+        status: 200,
+        headers: { "Content-Type": "application/json", ...corsHeaders },
+      }
+    );
   } catch (error) {
     console.error(error);
-    return new Response(JSON.stringify({ error: "Erro ao carregar as métricas.", details: error.message }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json', ...corsHeaders }
-    });
+    return new Response(
+      JSON.stringify({
+        error: "Erro ao carregar as métricas.",
+        details: error.message,
+      }),
+      {
+        status: 500,
+        headers: { "Content-Type": "application/json", ...corsHeaders },
+      }
+    );
   }
 }

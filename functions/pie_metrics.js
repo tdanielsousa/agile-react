@@ -1,31 +1,34 @@
-import { createClient } from '@libsql/client';
+import { createClient } from "@libsql/client";
 
 export async function onRequest(context) {
   const { request, env } = context;
 
   // Setup CORS Headers
   const corsHeaders = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
   };
 
   // Handle preflight requests
-  if (request.method === 'OPTIONS') {
+  if (request.method === "OPTIONS") {
     return new Response(null, { status: 200, headers: corsHeaders });
   }
 
   try {
     // Parse the query parameters from the URL
     const url = new URL(request.url);
-    const userIdParam = url.searchParams.get('userId');
+    const userIdParam = url.searchParams.get("userId");
     const userId = userIdParam ? Number(userIdParam) : null;
 
     if (!userId) {
-      return new Response(JSON.stringify({ error: 'Missing userId parameter' }), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json', ...corsHeaders }
-      });
+      return new Response(
+        JSON.stringify({ error: "Missing userId parameter" }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
     }
 
     // Initialize the Turso client using Cloudflare's env context
@@ -56,28 +59,37 @@ export async function onRequest(context) {
     const overdue = Number(row.overdue) || 0;
 
     // Helper to round perfectly to 2 decimal places
-    const getPct = (count) => total > 0 ? Number(((count / total) * 100).toFixed(2)) : 0;
+    const getPct = (count) =>
+      total > 0 ? Number(((count / total) * 100).toFixed(2)) : 0;
 
-    return new Response(JSON.stringify({
-      totalTasks: total,
-      todo,
-      inProgress,
-      completed,
-      overdue,
-      todoPct: getPct(todo),
-      inProgressPct: getPct(inProgress),
-      completedPct: getPct(completed),
-      overduePct: getPct(overdue)
-    }), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json', ...corsHeaders }
-    });
-
+    return new Response(
+      JSON.stringify({
+        totalTasks: total,
+        todo,
+        inProgress,
+        completed,
+        overdue,
+        todoPct: getPct(todo),
+        inProgressPct: getPct(inProgress),
+        completedPct: getPct(completed),
+        overduePct: getPct(overdue),
+      }),
+      {
+        status: 200,
+        headers: { "Content-Type": "application/json", ...corsHeaders },
+      }
+    );
   } catch (error) {
     console.error(error);
-    return new Response(JSON.stringify({ error: "Error loading pie chart metrics.", details: error.message }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json', ...corsHeaders }
-    });
+    return new Response(
+      JSON.stringify({
+        error: "Error loading pie chart metrics.",
+        details: error.message,
+      }),
+      {
+        status: 500,
+        headers: { "Content-Type": "application/json", ...corsHeaders },
+      }
+    );
   }
 }
