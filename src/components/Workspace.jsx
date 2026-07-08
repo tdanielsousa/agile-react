@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
 
-function Workspace({ user, project, layout }) {
+function Workspace({ user, project, layout, tasksVersion }) {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // Fetch tasks whenever the project changes
+  // Fetch tasks whenever the project changes OR tasksVersion triggers an update
   useEffect(() => {
     if (!project?.id) return;
 
-    setLoading(true);
+    // Only trigger full-screen load state if we don't have tasks rendered yet
+    if (tasks.length === 0) {
+      setLoading(true);
+    }
+
     fetch(`/get-tasks?projectId=${project.id}`)
       .then((res) => {
         if (!res.ok) throw new Error('Failed to fetch tasks');
@@ -22,7 +26,7 @@ function Workspace({ user, project, layout }) {
         console.error("Error loading tasks:", err);
         setLoading(false);
       });
-  }, [project?.id]);
+  }, [project?.id, tasksVersion]);
 
   // Bucketing tasks by status
   const todoTasks = tasks.filter(t => t.status === 'TODO');
@@ -45,15 +49,6 @@ function Workspace({ user, project, layout }) {
       </div>
     );
   }
-
-  // Helper component to render an individual task card/item
-  const TaskItem = ({ task }) => (
-    <div className="task-card" key={task.id}>
-      <h4>{task.name}</h4>
-      {task.note && <p className="task-note">{task.note}</p>}
-      {task.due_date && <span className="task-date">📅 {new Date(task.due_date).toLocaleDateString()}</span>}
-    </div>
-  );
 
   return (
     <div className="print_editor-workspace">

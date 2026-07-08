@@ -6,6 +6,13 @@ function Editor({ user, projectId, setProjectId, currentView, setView }) {
   const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(false);
   const [layout, setLayout] = useState('kanban'); 
+  
+  // Track dataset updates to trigger re-fetches
+  const [tasksVersion, setTasksVersion] = useState(0);
+
+  const handleTaskAdded = () => {
+    setTasksVersion(prev => prev + 1);
+  };
 
   // Fetch project execution when selection context changes
   useEffect(() => {
@@ -118,12 +125,14 @@ function Editor({ user, projectId, setProjectId, currentView, setView }) {
         setLayout={setLayout}
         onStatusChange={handleStatusChange}
         onDeleteProject={handleDeleteProject}
+        onRefreshData={handleTaskAdded} 
       />
       
       <Workspace
         user={user}  
         project={project}
         layout={layout}
+        tasksVersion={tasksVersion} 
       />
     </div>
   );

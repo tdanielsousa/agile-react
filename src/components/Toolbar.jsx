@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
-import InsertTask from './InsertTask'; // Import the new component
+import InsertTask from './InsertTask';
 
 function Toolbar({ user, project, projectId, layout, setLayout, onStatusChange, onDeleteProject, onRefreshData }) {
-  // Portal state management explicitly inside toolbar row context boundaries
   const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
 
   return (
@@ -45,7 +44,6 @@ function Toolbar({ user, project, projectId, layout, setLayout, onStatusChange, 
       {/* Secondary Row: Subtask Adders & Layout Toggles */}
       <div className="toolbar-row secondary-row">
         <div className="toolbar-group">
-          {/* Linked click event straight into portal state */}
           <a 
             href="#" 
             className="toolbar-btn btn-add"
@@ -79,7 +77,7 @@ function Toolbar({ user, project, projectId, layout, setLayout, onStatusChange, 
           user={user} 
           projectId={projectId} 
           onClose={() => setIsTaskModalOpen(false)}
-          onTaskAdded={onRefreshData} // callback function to refresh workspace 
+          onTaskAdded={onRefreshData} 
         />,
         document.body
       )}
