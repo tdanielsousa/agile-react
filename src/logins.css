@@ -130,3 +130,9 @@
 .toggle-btn:hover .inline-blue-btn {
   background-color: #1d4ed8;
 }
+
+.auth-success-msg {
+  color: green;
+  font-weight: bold;
+  text-align: center;
+}
