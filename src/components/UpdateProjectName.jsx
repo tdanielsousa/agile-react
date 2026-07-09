@@ -38,12 +38,16 @@ function UpdateProjectName({ projectId, currentName, onClose, onNameUpdated }) {
   };
 
   return (
-    <div className="modal-overlay" onClick={onClose} style={overlayStyle}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()} style={modalStyle}>
+    <div className="change-name-modal-backdrop" onClick={onClose}>
+      <div className="change-name-modal-box" onClick={(e) => e.stopPropagation()}>
+        <button className="change-name-modal-close-btn" onClick={onClose}>
+          &times;
+        </button>
+
         <h3>Change Project Name</h3>
         <form onSubmit={handleSubmit}>
-          <div style={{ marginBottom: '15px' }}>
-            <label htmlFor="projectName" style={{ display: 'block', marginBottom: '5px' }}>New Name:</label>
+          <div className="change-name-modal-form-group">
+            <label htmlFor="projectName">New Name:</label>
             <input
               type="text"
               id="projectName"
@@ -52,14 +56,22 @@ function UpdateProjectName({ projectId, currentName, onClose, onNameUpdated }) {
               placeholder="Enter new project name"
               required
               disabled={isSubmitting}
-              style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }}
             />
           </div>
-          <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
-            <button type="button" onClick={onClose} disabled={isSubmitting}>
+          <div className="change-name-modal-actions">
+            <button 
+              type="button" 
+              className="change-name-modal-btn-cancel" 
+              onClick={onClose} 
+              disabled={isSubmitting}
+            >
               Cancel
             </button>
-            <button type="submit" disabled={isSubmitting || !newName.trim()}>
+            <button 
+              type="submit" 
+              className="change-name-modal-btn-save" 
+              disabled={isSubmitting || !newName.trim()}
+            >
               {isSubmitting ? 'Saving...' : 'Save'}
             </button>
           </div>
@@ -68,14 +80,5 @@ function UpdateProjectName({ projectId, currentName, onClose, onNameUpdated }) {
     </div>
   );
 }
-
-
-const overlayStyle = {
-  position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-  backgroundColor: 'rgba(0, 0, 0, 0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000
-};
-const modalStyle = {
-  backgroundColor: '#fff', padding: '20px', borderRadius: '6px', width: '350px', maxWidth: '90%'
-};
 
 export default UpdateProjectName;
