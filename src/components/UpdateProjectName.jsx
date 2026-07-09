@@ -10,7 +10,7 @@ function UpdateProjectName({ projectId, currentName, onClose, onNameUpdated }) {
 
     setIsSubmitting(true);
 
-    fetch('/api/update-project-name', {
+    fetch('/update-project-name', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
