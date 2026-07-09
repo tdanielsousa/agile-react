@@ -461,7 +461,8 @@
   margin-left: 70px;
 }
 
-.print_task-card .task-note {
+.print_task-card .task-date {
   font-size: 0.80rem;
-  margin-right: auto;
+  margin-left: auto;
+  
 }
