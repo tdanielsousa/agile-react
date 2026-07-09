@@ -323,8 +323,8 @@
 .dashbg .print_task-card {
   background: #ffffff;
   border-radius: 6px;
-  padding: 2px;
-  margin-bottom: 10px;
+  padding: 1px 1px 1px 4px;
+  margin-bottom: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   border-left: 8px solid;
   cursor: pointer;
@@ -365,12 +365,11 @@
 .dashbg .print_list-container {
   display: flex;
   flex-direction: column;
-  gap: 8px;
 }
 
 .print_task-card h4 {
-  margin: 0 0 6px 0;
-  font-size: 1rem;
+  margin: 0 0 2px 0;
+  font-size: 0.95rem;
   overflow-wrap: break-word;
   overflow: hidden;
   color: black;
@@ -387,7 +386,7 @@
 .print_task-card .task-note {
   font-size: 0.85rem;
   color: #4a5568;
-  margin-bottom: 4px;
+  margin-bottom: 1px;
   overflow-wrap: break-word;
   overflow: hidden;
 
@@ -463,6 +462,4 @@
 
 .print_task-card .task-date {
   font-size: 0.80rem;
-  margin-left: auto;
-  
 }
