@@ -3,38 +3,32 @@ import { createClient } from "@libsql/client";
 export async function onRequest(context) {
   const { request, env } = context;
 
-  // Setup CORS Headers
   const corsHeaders = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "GET, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
   };
 
-  // Handle preflight requests
   if (request.method === "OPTIONS") {
     return new Response(null, { status: 200, headers: corsHeaders });
   }
 
   try {
-    // Parse the query parameters from the URL
     const url = new URL(request.url);
     const userIdParam = url.searchParams.get("userId");
-    const userId = userIdParam ? Number(userIdParam) : 1; // Fallback to user 1 for tests
+    const userId = userIdParam ? Number(userIdParam) : 1; 
 
-    // Initialize the Turso client using Cloudflare's env context
     const client = createClient({
       url: env.TURSO_DATABASE_URL,
       authToken: env.TURSO_AUTH_TOKEN,
     });
 
-    // Query 1: Contar projetos ACTIVE do utilizador
     const projectsQuery = `
       SELECT COUNT(*) as activeProjects 
       FROM projects 
       WHERE user_id = ? AND status = 'ACTIVE';
     `;
 
-    // Query 2: Contar tarefas de projetos ACTIVE do utilizador por estado
     const tasksQuery = `
       SELECT 
         SUM(CASE WHEN t.status = 'COMPLETED' THEN 1 ELSE 0 END) as completedTasks,

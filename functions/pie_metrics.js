@@ -3,20 +3,18 @@ import { createClient } from "@libsql/client";
 export async function onRequest(context) {
   const { request, env } = context;
 
-  // Setup CORS Headers
   const corsHeaders = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "GET, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
   };
 
-  // Handle preflight requests
   if (request.method === "OPTIONS") {
     return new Response(null, { status: 200, headers: corsHeaders });
   }
 
   try {
-    // Parse the query parameters from the URL
+
     const url = new URL(request.url);
     const userIdParam = url.searchParams.get("userId");
     const userId = userIdParam ? Number(userIdParam) : null;
@@ -31,7 +29,7 @@ export async function onRequest(context) {
       );
     }
 
-    // Initialize the Turso client using Cloudflare's env context
+  
     const client = createClient({
       url: env.TURSO_DATABASE_URL,
       authToken: env.TURSO_AUTH_TOKEN,
@@ -58,7 +56,6 @@ export async function onRequest(context) {
     const completed = Number(row.completed) || 0;
     const overdue = Number(row.overdue) || 0;
 
-    // Helper to round perfectly to 2 decimal places
     const getPct = (count) =>
       total > 0 ? Number(((count / total) * 100).toFixed(2)) : 0;
 

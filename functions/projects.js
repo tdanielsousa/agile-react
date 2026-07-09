@@ -1,37 +1,20 @@
-// api/projects.js
-
-/*
-/////////////////////////////
-PROJECTS CAN BE:
-ACTIVE
-OVER
-////////////////////////////////
-TASKS CAN BE:
-TODO
-PROGRESS
-COMPLETED
-OVER
-///////////////////////////////
-*/
 import { createClient } from "@libsql/client";
 
 export async function onRequest(context) {
   const { request, env } = context;
 
-  // Setup CORS Headers
   const corsHeaders = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "GET, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
   };
 
-  // Handle preflight requests
   if (request.method === "OPTIONS") {
     return new Response(null, { status: 200, headers: corsHeaders });
   }
 
   try {
-    // Parse the query parameters from the URL string
+
     const url = new URL(request.url);
     const userId = url.searchParams.get("userId");
 
@@ -45,7 +28,6 @@ export async function onRequest(context) {
       );
     }
 
-    // Initialize the Turso client using Cloudflare's env context
     const client = createClient({
       url: env.TURSO_DATABASE_URL,
       authToken: env.TURSO_AUTH_TOKEN,
@@ -70,7 +52,6 @@ export async function onRequest(context) {
 
     const result = await client.execute({ sql: query, args: [userId] });
 
-    // Formatar os dados para o formato que o teu componente React espera
     const projects = result.rows.map((row) => {
       const total = Number(row.totalTasks) || 0;
 
@@ -91,7 +72,7 @@ export async function onRequest(context) {
         inProgressPct: getPercentage(row.inProgress),
         completedPct: getPercentage(row.completed),
         overduePct: getPercentage(row.overdue),
-        // Format createdAt: "YYYY-MM-DD HH:mm:ss" -> "HH:mm - DD/MM/YYYY"
+
         createdAt: (() => {
           if (!row.createdAt) return "N/A";
           const parts = row.createdAt.split(" ");

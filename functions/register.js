@@ -3,19 +3,16 @@ import { createClient } from "@libsql/client";
 export async function onRequest(context) {
   const { request, env } = context;
 
-  // Setup CORS Headers
   const corsHeaders = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
   };
 
-  // Handle preflight requests
   if (request.method === "OPTIONS") {
     return new Response(null, { status: 200, headers: corsHeaders });
   }
 
-  // Only allow POST requests for registration
   if (request.method !== "POST") {
     return new Response(JSON.stringify({ error: "Method not allowed" }), {
       status: 405,
@@ -24,7 +21,7 @@ export async function onRequest(context) {
   }
 
   try {
-    // Parse the incoming JSON body natively
+
     const { username, password } = await request.json();
 
     if (!username || !password) {
@@ -37,13 +34,11 @@ export async function onRequest(context) {
       );
     }
 
-    // Initialize the Turso client using Cloudflare's env context
     const client = createClient({
       url: env.TURSO_DATABASE_URL,
       authToken: env.TURSO_AUTH_TOKEN,
     });
 
-    // Insert the new user into the Turso database
     await client.execute({
       sql: "INSERT INTO users (username, password_hash) VALUES (?, ?);",
       args: [username, password],
@@ -59,7 +54,6 @@ export async function onRequest(context) {
   } catch (error) {
     console.error(error);
 
-    // Check if the error is because the username already exists (UNIQUE constraint)
     if (error.message && error.message.includes("UNIQUE")) {
       return new Response(
         JSON.stringify({ error: "That username is already taken." }),

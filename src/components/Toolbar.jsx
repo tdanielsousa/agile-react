@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { createPortal } from "react-dom";
 import InsertTask from "./InsertTask";
+import UpdateProjectName from "./UpdateProjectName";
 
 function Toolbar({
   user,
@@ -13,6 +14,7 @@ function Toolbar({
   onRefreshData,
 }) {
   const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
+  const [isNameModalOpen, setIsNameModalOpen] = useState(false);
 
   return (
     <div className="editor-toolbar">
@@ -37,7 +39,15 @@ function Toolbar({
 
       <div className="toolbar-row secondary-row">
         <div className="toolbar-group">
-          <a href="#" className="toolbar-btn btn-change-name">
+
+          <a 
+            href="#" 
+            className="toolbar-btn btn-change-name"
+            onClick={(e) => {
+              e.preventDefault();
+              setIsNameModalOpen(true);
+            }}
+          >
             Change Project Name
           </a>
         </div>
@@ -106,6 +116,7 @@ function Toolbar({
         </div>
       </div>
 
+
       {isTaskModalOpen &&
         createPortal(
           <InsertTask
@@ -113,6 +124,17 @@ function Toolbar({
             projectId={projectId}
             onClose={() => setIsTaskModalOpen(false)}
             onTaskAdded={onRefreshData}
+          />,
+          document.body
+        )}
+
+      {isNameModalOpen &&
+        createPortal(
+          <UpdateProjectName
+            projectId={projectId}
+            currentName={project?.name}
+            onClose={() => setIsNameModalOpen(false)}
+            onNameUpdated={onRefreshData} 
           />,
           document.body
         )}

@@ -3,19 +3,16 @@ import { createClient } from "@libsql/client";
 export async function onRequest(context) {
   const { request, env } = context;
 
-  // Setup CORS Headers
   const corsHeaders = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
   };
 
-  // Handle preflight requests
   if (request.method === "OPTIONS") {
     return new Response(null, { status: 200, headers: corsHeaders });
   }
 
-  // Only allow POST requests for task creation
   if (request.method !== "POST") {
     return new Response(JSON.stringify({ error: "Method not allowed" }), {
       status: 405,
@@ -24,10 +21,9 @@ export async function onRequest(context) {
   }
 
   try {
-    // Parse the incoming JSON body natively
     const { name, note, dueDate, projectId, userId } = await request.json();
 
-    // Validation
+
     if (!name || !name.trim()) {
       return new Response(JSON.stringify({ error: "Task name is required." }), {
         status: 400,
@@ -46,7 +42,6 @@ export async function onRequest(context) {
       );
     }
 
-    // Initialize the Turso client using Cloudflare's env context
     const client = createClient({
       url: env.TURSO_DATABASE_URL,
       authToken: env.TURSO_AUTH_TOKEN,
@@ -57,7 +52,6 @@ export async function onRequest(context) {
       VALUES (?, ?, ?, 'TODO', ?, ?);
     `;
 
-    // Fallback empty text logic strings if user omits note or due date
     const finalNote = note?.trim() || null;
     const finalDueDate = dueDate || null;
 

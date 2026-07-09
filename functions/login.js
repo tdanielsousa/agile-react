@@ -3,7 +3,6 @@ import { createClient } from "@libsql/client";
 export async function onRequest(context) {
   const { request, env } = context;
 
-  // Setup CORS Headers
   const corsHeaders = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "POST, OPTIONS",
@@ -22,16 +21,13 @@ export async function onRequest(context) {
   }
 
   try {
-    // Initialize Turso using Cloudflare's env object
     const client = createClient({
       url: env.TURSO_DATABASE_URL,
       authToken: env.TURSO_AUTH_TOKEN,
     });
 
-    // Parse the incoming JSON body
     const { username, password } = await request.json();
 
-    // Search the database
     const result = await client.execute({
       sql: "SELECT id, username FROM users WHERE username = ? AND password_hash = ? LIMIT 1;",
       args: [username, password],

@@ -9,12 +9,11 @@ export async function onRequest(context) {
     "Access-Control-Allow-Headers": "Content-Type",
   };
 
-  // preflight requests
   if (request.method === "OPTIONS") {
     return new Response(null, { status: 200, headers: corsHeaders });
   }
 
-  // only allow post requests for creation
+
   if (request.method !== "POST") {
     return new Response(JSON.stringify({ error: "Method Not Allowed" }), {
       status: 405,
@@ -23,10 +22,8 @@ export async function onRequest(context) {
   }
 
   try {
-    // parse the incoming json
     const { name, userId } = await request.json();
 
-    // validate
     if (!name || !name.trim()) {
       return new Response(
         JSON.stringify({ error: "Project name is required." }),
@@ -46,7 +43,6 @@ export async function onRequest(context) {
       );
     }
     
-    // turso client w cloudflare
     const client = createClient({
       url: env.TURSO_DATABASE_URL,
       authToken: env.TURSO_AUTH_TOKEN,

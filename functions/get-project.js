@@ -3,19 +3,16 @@ import { createClient } from "@libsql/client";
 export async function onRequest(context) {
   const { request, env } = context;
 
-  // Setup CORS Headers
   const corsHeaders = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "GET, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
   };
 
-  // Handle preflight requests
   if (request.method === "OPTIONS") {
     return new Response(null, { status: 200, headers: corsHeaders });
   }
 
-  // Parse the query parameters from the URL
   const url = new URL(request.url);
   const projectId = url.searchParams.get("projectId");
 
@@ -30,13 +27,11 @@ export async function onRequest(context) {
   }
 
   try {
-    // Initialize Turso client using Cloudflare's env context
     const client = createClient({
       url: env.TURSO_DATABASE_URL,
       authToken: env.TURSO_AUTH_TOKEN,
     });
 
-    // 1. Fetch the single project row
     const projectResult = await client.execute({
       sql: "SELECT * FROM projects WHERE id = ? LIMIT 1",
       args: [projectId],
@@ -51,13 +46,11 @@ export async function onRequest(context) {
 
     const projectRow = projectResult.rows[0];
 
-    // 2. Fetch all tasks associated with this specific project
     const tasksResult = await client.execute({
       sql: "SELECT * FROM tasks WHERE project_id = ? ORDER BY created_at ASC",
       args: [projectId],
     });
 
-    // 3. Package them up.
     const projectData = {
       id: projectRow.id,
       name: projectRow.name,

@@ -3,19 +3,16 @@ import { createClient } from "@libsql/client";
 export async function onRequest(context) {
   const { request, env } = context;
 
-  // Setup CORS Headers
   const corsHeaders = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "DELETE, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
   };
 
-  // Handle preflight requests
   if (request.method === "OPTIONS") {
     return new Response(null, { status: 200, headers: corsHeaders });
   }
 
-  // Only allow DELETE requests
   if (request.method !== "DELETE") {
     return new Response(JSON.stringify({ error: "Method Not Allowed" }), {
       status: 405,
@@ -24,7 +21,6 @@ export async function onRequest(context) {
   }
 
   try {
-    // Parse the incoming JSON body natively
     const body = await request.json();
     const { projectId } = body || {};
 
@@ -38,19 +34,16 @@ export async function onRequest(context) {
       );
     }
 
-    // Initialize the Turso client using Cloudflare's env context
     const client = createClient({
       url: env.TURSO_DATABASE_URL,
       authToken: env.TURSO_AUTH_TOKEN,
     });
 
-    // 1. First, delete associated tasks to maintain foreign key integrity
     await client.execute({
       sql: "DELETE FROM tasks WHERE project_id = ?",
       args: [Number(projectId)],
     });
 
-    // 2. Delete the project itself
     const result = await client.execute({
       sql: "DELETE FROM projects WHERE id = ?",
       args: [Number(projectId)],

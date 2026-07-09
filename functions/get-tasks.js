@@ -11,7 +11,6 @@ export async function onRequestGet(context) {
     });
   }
 
-  // Initialize your Turso client using Cloudflare environment variables
   const db = createClient({
     url: env.TURSO_DATABASE_URL,
     authToken: env.TURSO_AUTH_TOKEN,
