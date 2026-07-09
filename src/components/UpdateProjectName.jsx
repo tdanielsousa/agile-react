@@ -60,14 +60,6 @@ function UpdateProjectName({ projectId, currentName, onClose, onNameUpdated }) {
           </div>
           <div className="change-name-modal-actions">
             <button 
-              type="button" 
-              className="change-name-modal-btn-cancel" 
-              onClick={onClose} 
-              disabled={isSubmitting}
-            >
-              Cancel
-            </button>
-            <button 
               type="submit" 
               className="change-name-modal-btn-save" 
               disabled={isSubmitting || !newName.trim()}
