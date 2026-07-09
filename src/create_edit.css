@@ -359,7 +359,7 @@
 .dashbg .print_list-layout {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 5px;
 }
 
 .dashbg .print_list-container {
