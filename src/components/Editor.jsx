@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Toolbar from "./Toolbar";
-import Workspace from "./Workspace";
+import Editor_Workspace from "./Editor_Workspace";
 
 function Editor({ user, projectId, setProjectId, currentView, setView }) {
   const [project, setProject] = useState(null);
@@ -130,7 +130,7 @@ function Editor({ user, projectId, setProjectId, currentView, setView }) {
         onRefreshData={handleTaskAdded}
       />
 
-      <Workspace
+      <Editor_Workspace
         user={user}
         project={project}
         layout={layout}

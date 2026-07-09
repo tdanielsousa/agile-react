@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function Workspace({ user, project, layout, tasksVersion }) {
+function Editor_Workspace({ user, project, layout, tasksVersion }) {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -110,4 +110,4 @@ function Workspace({ user, project, layout, tasksVersion }) {
   );
 }
 
-export default Workspace;
+export default Editor_Workspace;
