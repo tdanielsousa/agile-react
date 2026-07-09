@@ -80,7 +80,7 @@ function Sidebar({ onLogout, toggleDarkMode, user, currentView, setView }) {
         </div>
         <div className="date-time">
           {" "}
-          <DateTimeDisplay />{" "}
+          <Sidebar_DateTimeDisplay />{" "}
         </div>
       </div>
 
