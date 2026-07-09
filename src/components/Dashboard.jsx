@@ -98,7 +98,7 @@ function Dashboard({ user, onLogout }) {
                 )}
 
                 {currentView === "editor" && (
-                  <div key="editor-view" className="content-card fade-in">
+                  <div key="editor-view" className="content-card editor fade-in">
                     <Editor
                       user={user}
                       projectId={selectedProjectId}
