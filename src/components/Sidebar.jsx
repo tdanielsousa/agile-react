@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { createPortal } from "react-dom";
 import Creator from "./Creator";
-import DateTimeDisplay from "./DateTimeDisplay";
+import Sidebar_DateTimeDisplay from "./Sidebar_DateTimeDisplay";
 
 function Sidebar({ onLogout, toggleDarkMode, user, currentView, setView }) {
   const [isCreatorOpen, setIsCreatorOpen] = useState(false);

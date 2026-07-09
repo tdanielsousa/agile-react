@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function TasksOverview({ user }) {
+function Dashboard_TasksOverview({ user }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -90,4 +90,4 @@ function TasksOverview({ user }) {
   );
 }
 
-export default TasksOverview;
+export default Dashboard_TasksOverview;

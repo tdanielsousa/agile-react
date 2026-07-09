@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export default function DateTimeDisplay() {
+export default function Sidebar_DateTimeDisplay() {
   const [currentDate, setCurrentDate] = useState(new Date());
 
   useEffect(() => {

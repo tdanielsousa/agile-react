@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function ActiveProjects({ user, currentView, setView, onSelectProject }) {
+function Dashboard_ActiveProjects({ user, currentView, setView, onSelectProject }) {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -116,4 +116,4 @@ function ActiveProjects({ user, currentView, setView, onSelectProject }) {
   );
 }
 
-export default ActiveProjects;
+export default Dashboard_ActiveProjects;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function MetricCards({ user }) {
+function Dashboard_MetricCards({ user }) {
   const [metrics, setMetrics] = useState({
     activeProjects: 0,
     completedTasks: 0,
@@ -54,4 +54,4 @@ function MetricCards({ user }) {
   );
 }
 
-export default MetricCards;
+export default Dashboard_MetricCards;

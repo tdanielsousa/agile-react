@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function ProjectStats({ user }) {
+function Dashboard_ProjectStats({ user }) {
   const [stats, setStats] = useState({
     totalProjects: 0,
     todo: 0,
@@ -118,4 +118,4 @@ function ProjectStats({ user }) {
   );
 }
 
-export default ProjectStats;
+export default Dashboard_ProjectStats;

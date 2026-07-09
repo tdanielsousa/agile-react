@@ -1,6 +1,6 @@
 import React from "react";
 import Home_Meta from "./Home_Meta";
-import LoginForm from "./LoginForm";
+import Home_LoginForm from "./Home_LoginForm";
 import Home_RegisterForm from "./Home_RegisterForm";
 import "../logins.css";
 
@@ -29,7 +29,7 @@ function Home({ onLogin }) {
                 onToggleLogin={() => toggleForm(false)}
               />
             ) : (
-              <LoginForm
+              <Home_LoginForm
                 onLogin={onLogin}
                 onToggleRegister={() => toggleForm(true)}
               />
