@@ -1,6 +1,6 @@
 import React from "react";
 
-function Editor_Workspace_List({ columns }) {
+function Editor_Workspace_List({ columns, onSelectTask }) {
   return (
     <div className="print_list-layout">
       {columns.map(
@@ -13,7 +13,12 @@ function Editor_Workspace_List({ columns }) {
               <h3 className="print_list-section-title">{col.title}</h3>
               <div className="print_list-container">
                 {col.tasks.map((task) => (
-                  <div className="print_task-card" key={task.id}>
+                  <div 
+                    className="print_task-card" 
+                    key={task.id}
+                    onClick={() => onSelectTask(task)}
+                    style={{ cursor: "pointer" }}
+                  >
                     <h4>{task.name}</h4>
                     {task.note && <p className="task-note">{task.note}</p>}
                     {task.due_date && (

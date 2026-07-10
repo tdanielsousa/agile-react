@@ -1,6 +1,6 @@
 import React from "react";
 
-function Editor_Workspace_Kanban({ columns }) {
+function Editor_Workspace_Kanban({ columns, onSelectTask }) {
   return (
     <div className="print_kanban-grid">
       {columns.map((col) => (
@@ -16,7 +16,12 @@ function Editor_Workspace_Kanban({ columns }) {
               <p className="no-tasks">No tasks</p>
             ) : (
               col.tasks.map((task) => (
-                <div className="print_task-card" key={task.id}>
+                <div 
+                  className="print_task-card" 
+                  key={task.id}
+                  onClick={() => onSelectTask(task)}
+                  style={{ cursor: "pointer" }}
+                >
                   <h4>{task.name}</h4>
                   {task.note && <p className="task-note">{task.note}</p>}
                   {task.due_date && (
