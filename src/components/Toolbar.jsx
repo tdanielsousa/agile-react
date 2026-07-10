@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import InsertTask from "./InsertTask";
 import UpdateProjectName from "./UpdateProjectName";
@@ -15,6 +15,14 @@ function Toolbar({
 }) {
   const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
   const [isNameModalOpen, setIsNameModalOpen] = useState(false);
+  
+  const [localNameOverride, setLocalNameOverride] = useState(null);
+
+  useEffect(() => {
+    setLocalNameOverride(null);
+  }, [projectId]);
+
+  const displayName = localNameOverride !== null ? localNameOverride : project.name;
 
   return (
     <div className="editor-toolbar">
@@ -22,7 +30,7 @@ function Toolbar({
         <div className="toolbar-group">
           <span className="label">Project:</span>
           <span className="project-current-name">
-            {project.name} (ID: {projectId}) — <small>[{project.status}]</small>
+            {displayName} (ID: {projectId}) — <small>[{project.status}]</small>
           </span>
         </div>
 
@@ -39,7 +47,6 @@ function Toolbar({
 
       <div className="toolbar-row secondary-row">
         <div className="toolbar-group">
-
           <a 
             href="#" 
             className="toolbar-btn btn-change-name"
@@ -116,7 +123,6 @@ function Toolbar({
         </div>
       </div>
 
-
       {isTaskModalOpen &&
         createPortal(
           <InsertTask
@@ -132,9 +138,12 @@ function Toolbar({
         createPortal(
           <UpdateProjectName
             projectId={projectId}
-            currentName={project?.name}
+            currentName={displayName}
             onClose={() => setIsNameModalOpen(false)}
-            onNameUpdated={onRefreshData} 
+            onNameUpdated={(savedName) => {
+              setLocalNameOverride(savedName);
+              if (onRefreshData) onRefreshData();
+            }} 
           />,
           document.body
         )}
@@ -143,3 +152,4 @@ function Toolbar({
 }
 
 export default Toolbar;
+

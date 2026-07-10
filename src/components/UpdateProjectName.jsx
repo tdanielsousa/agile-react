@@ -25,7 +25,7 @@ function UpdateProjectName({ projectId, currentName, onClose, onNameUpdated }) {
         return res.json();
       })
       .then(() => {
-        onNameUpdated();
+        onNameUpdated(newName.trim());
         onClose();
       })
       .catch((err) => {
