@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { createPortal } from "react-dom";
-import InsertTask from "./InsertTask";
-import UpdateProjectName from "./UpdateProjectName";
+import Toolbar_First_Row from "./Toolbar_First_Row";
+import Toolbar_Second_Row from "./Toolbar_Second_Row";
+import Toolbar_Third_Row from "./Toolbar_Third_Row";
 
 function Toolbar({
   user,
@@ -13,143 +13,43 @@ function Toolbar({
   onDeleteProject,
   onRefreshData,
 }) {
-  const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
-  const [isNameModalOpen, setIsNameModalOpen] = useState(false);
-  
   const [localNameOverride, setLocalNameOverride] = useState(null);
 
   useEffect(() => {
     setLocalNameOverride(null);
   }, [projectId]);
 
-  const displayName = localNameOverride !== null ? localNameOverride : project.name;
+  const displayName =
+    localNameOverride !== null ? localNameOverride : project.name;
 
   return (
     <div className="editor-toolbar">
-      <div className="toolbar-row">
-        <div className="toolbar-group">
-          <span className="label">Project:</span>
-          <span className="project-current-name">
-            {displayName} (ID: {projectId}) — <small>[{project.status}]</small>
-          </span>
-        </div>
+      <Toolbar_First_Row
+        displayName={displayName}
+        projectId={projectId}
+        project={project}
+        onDeleteProject={onDeleteProject}
+      />
 
-        <div className="toolbar-group actions-right">
-          <a
-            href="#"
-            className="toolbar-btn btn-delete"
-            onClick={onDeleteProject}
-          >
-            Delete project
-          </a>
-        </div>
-      </div>
+      <Toolbar_Second_Row
+        projectId={projectId}
+        displayName={displayName}
+        project={project}
+        onStatusChange={onStatusChange}
+        onRefreshData={() => {
+          if (onRefreshData) onRefreshData();
+        }}
+      />
 
-      <div className="toolbar-row secondary-row">
-        <div className="toolbar-group">
-          <a 
-            href="#" 
-            className="toolbar-btn btn-change-name"
-            onClick={(e) => {
-              e.preventDefault();
-              setIsNameModalOpen(true);
-            }}
-          >
-            Change Project Name
-          </a>
-        </div>
-
-        <div className="toolbar-group utilities-right">
-          <a
-            href="#"
-            className={`toolbar-btn btn-active ${
-              project.status === "ACTIVE" ? "active-layout" : ""
-            }`}
-            onClick={(e) => onStatusChange(e, "ACTIVE")}
-          >
-            Set project as Active
-          </a>
-          <a
-            href="#"
-            className={`toolbar-btn btn-done ${
-              project.status === "OVER" ? "active-layout" : ""
-            }`}
-            onClick={(e) => onStatusChange(e, "OVER")}
-          >
-            Set project as Archived
-          </a>
-        </div>
-      </div>
-
-      <div className="toolbar-row secondary-row">
-        <div className="toolbar-group">
-          <a
-            href="#"
-            className="toolbar-btn btn-add"
-            onClick={(e) => {
-              e.preventDefault();
-              setIsTaskModalOpen(true);
-            }}
-          >
-            + Add Task
-          </a>
-        </div>
-
-        <div className="toolbar-group utilities-right">
-          <a
-            href="#"
-            className={`toolbar-btn ${
-              layout === "kanban" ? "active-layout" : ""
-            }`}
-            onClick={(e) => {
-              e.preventDefault();
-              setLayout("kanban");
-            }}
-          >
-            Kanban Layout
-          </a>
-          <a
-            href="#"
-            className={`toolbar-btn ${
-              layout === "list" ? "active-layout" : ""
-            }`}
-            onClick={(e) => {
-              e.preventDefault();
-              setLayout("list");
-            }}
-          >
-            List Layout
-          </a>
-        </div>
-      </div>
-
-      {isTaskModalOpen &&
-        createPortal(
-          <InsertTask
-            user={user}
-            projectId={projectId}
-            onClose={() => setIsTaskModalOpen(false)}
-            onTaskAdded={onRefreshData}
-          />,
-          document.body
-        )}
-
-      {isNameModalOpen &&
-        createPortal(
-          <UpdateProjectName
-            projectId={projectId}
-            currentName={displayName}
-            onClose={() => setIsNameModalOpen(false)}
-            onNameUpdated={(savedName) => {
-              setLocalNameOverride(savedName);
-              if (onRefreshData) onRefreshData();
-            }} 
-          />,
-          document.body
-        )}
+      <Toolbar_Third_Row
+        user={user}
+        projectId={projectId}
+        layout={layout}
+        setLayout={setLayout}
+        onRefreshData={onRefreshData}
+      />
     </div>
   );
 }
 
 export default Toolbar;
-
