@@ -36,7 +36,8 @@ function Toolbar({
         displayName={displayName}
         project={project}
         onStatusChange={onStatusChange}
-        onRefreshData={() => {
+        onLocalNameChange={(newName) => {
+          setLocalNameOverride(newName);
           if (onRefreshData) onRefreshData();
         }}
       />

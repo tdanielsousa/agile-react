@@ -2,15 +2,8 @@ import React, { useState } from "react";
 import { createPortal } from "react-dom";
 import UpdateProjectName from "./UpdateProjectName";
 
-function Toolbar_Second_Row({ projectId, displayName, project, onStatusChange, onRefreshData }) {
+function Toolbar_Second_Row({ projectId, displayName, project, onStatusChange, onLocalNameChange }) {
   const [isNameModalOpen, setIsNameModalOpen] = useState(false);
-  const [localNameOverride, setLocalNameOverride] = useState(null);
-
-  React.useEffect(() => {
-    setLocalNameOverride(null);
-  }, [projectId]);
-
-  const activeDisplayName = localNameOverride !== null ? localNameOverride : displayName;
 
   return (
     <div className="toolbar-row secondary-row">
@@ -52,11 +45,10 @@ function Toolbar_Second_Row({ projectId, displayName, project, onStatusChange, o
         createPortal(
           <UpdateProjectName
             projectId={projectId}
-            currentName={activeDisplayName}
+            currentName={displayName}
             onClose={() => setIsNameModalOpen(false)}
             onNameUpdated={(savedName) => {
-              setLocalNameOverride(savedName);
-              if (onRefreshData) onRefreshData();
+              if (onLocalNameChange) onLocalNameChange(savedName);
             }} 
           />,
           document.body
