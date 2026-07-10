@@ -583,3 +583,131 @@
   }
 }
 
+/* /////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////// */
+
+.taskmodal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  animation: taskmodalFadeIn 0.2s ease-out forwards;
+}
+
+.taskmodal-box {
+  position: relative;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  max-width: 480px;
+  width: 90%;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  animation: taskmodalSlideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.taskmodal-box h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.taskmodal-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 32px;
+  line-height: 1;
+  color: #a0aec0;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s ease;
+}
+
+.taskmodal-close-btn:hover {
+  color: #333; 
+}
+
+.taskmodal-form-group {
+  margin-bottom: 20px;
+}
+
+.taskmodal-form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.taskmodal-form-group input,
+.taskmodal-form-group select,
+.taskmodal-form-group textarea {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.taskmodal-form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.taskmodal-form-group input:disabled,
+.taskmodal-form-group select:disabled,
+.taskmodal-form-group textarea:disabled {
+  background-color: #f7fafc;
+  cursor: not-allowed;
+}
+
+.taskmodal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.taskmodal-actions button {
+  padding: 15px 40px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  background-color: #0a14a3;
+  margin-right: auto;
+  margin-left: auto;
+  color: white;
+}
+
+.taskmodal-actions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@keyframes taskmodalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes taskmodalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
