@@ -643,7 +643,7 @@
 
 .taskmodal-form-group label {
   display: block;
-  margin-bottom: 8px;
+  margin-top: 8px;
   font-weight: 600;
   color: #4a5568;
   margin-bottom: 3px;
@@ -729,7 +729,8 @@
   font-weight: 700;
 }
 
-.status-select:hover {
-  color: #ffffff;  
-}
+.status-select option[value="TODO"]:hover  { color: var(--blue); }
+.status-select option[value="PROGRESS"]:hover  { color: var(--yellow); }
+.status-select option[value="COMPLETED"]:hover  { color: var(--green); }
+.status-select option[value="OVER"]:hover  { color: var(--red); }
 
