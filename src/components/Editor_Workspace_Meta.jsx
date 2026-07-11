@@ -7,9 +7,8 @@ function Editor_Workspace_Meta({ project, tasksVersion, children }) {
   useEffect(() => {
     if (!project?.id) return;
 
-    if (tasks.length === 0) {
-      setLoading(true);
-    }
+
+    setLoading(true);
 
     fetch(`/get-tasks?projectId=${project.id}`)
       .then((res) => {
@@ -17,7 +16,7 @@ function Editor_Workspace_Meta({ project, tasksVersion, children }) {
         return res.json();
       })
       .then((data) => {
-        setTasks(data);
+        setTasks([...data]); 
         setLoading(false);
       })
       .catch((err) => {
@@ -25,7 +24,6 @@ function Editor_Workspace_Meta({ project, tasksVersion, children }) {
         setLoading(false);
       });
   }, [project?.id, tasksVersion]);
-
   const todoTasks = tasks.filter((t) => t.status === "TODO");
   const progressTasks = tasks.filter((t) => t.status === "PROGRESS");
   const completedTasks = tasks.filter((t) => t.status === "COMPLETED");
