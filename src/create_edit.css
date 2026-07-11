@@ -133,11 +133,10 @@
 
 .dashbg .editor-toolbar .toolbar-btn {
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   color: #335edd;
   border-radius: 10px;
-  padding: 4px 4px;
-  font-size: .9rem;
+  padding: 6px 10px;
   transition: all 0.3s ease-in-out;
   background-color: rgba(255, 255, 255, 0.4);
   border: 1px solid #c6c6c6;
@@ -727,10 +726,5 @@
 
 .status-select {
   font-weight: 700;
+  background-color: #ffffff;
 }
-
-.status-select option[value="TODO"]:hover  { color: var(--blue); }
-.status-select option[value="PROGRESS"]:hover  { color: var(--yellow); }
-.status-select option[value="COMPLETED"]:hover  { color: var(--green); }
-.status-select option[value="OVER"]:hover  { color: var(--red); }
-
