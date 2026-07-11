@@ -601,7 +601,7 @@
   animation: taskmodalFadeIn 0.2s ease-out forwards;
 }
 
-.taskmodal-box {
+.dashbg .taskmodal-box {
   position: relative;
   background: #ffffff;
   padding: 30px;
@@ -657,8 +657,8 @@
   box-sizing: border-box;
   border: 1px solid #cbd5e0;
   border-radius: 6px;
-  font-size: 14px;
   font-family: inherit;
+  font-size: 0.90em;
 }
 
 .taskmodal-form-group textarea {
@@ -724,3 +724,12 @@
 .status-select option[value="PROGRESS"] { color: var(--yellow); }
 .status-select option[value="COMPLETED"] { color: var(--green); }
 .status-select option[value="OVER"] { color: var(--red); }
+
+.status-select {
+  font-weight: 700;
+}
+
+.status-select:hover {
+  color: #ffffff;  
+}
+

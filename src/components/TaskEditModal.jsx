@@ -51,10 +51,10 @@ function TaskEditModal({ task, onClose, onTaskUpdated }) {
                   disabled={saving}
                   className={`status-select ${status.toLowerCase()}`}
                 >
-                  <option value="TODO">To Do</option>
-                  <option value="PROGRESS">In Progress</option>
-                  <option value="COMPLETED">Completed</option>
-                  <option value="OVER">Over</option>
+                  <option value="TODO">⯀ To Do</option>
+                  <option value="PROGRESS">⯀ In Progress</option>
+                  <option value="COMPLETED">⯀ Completed</option>
+                  <option value="OVER">⯀ Overdue</option>
                 </select>
               </div>
 
