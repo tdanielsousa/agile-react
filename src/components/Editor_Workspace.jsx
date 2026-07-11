@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import Editor_Workspace_Meta from "./Editor_Workspace_Meta";
 import Editor_Workspace_Kanban from "./Editor_Workspace_Kanban";
 import Editor_Workspace_List from "./Editor_Workspace_List";
-import TaskEditModal from "./TaskEditModal"; // Import the modal
+import TaskEditModal from "./TaskEditModal"; 
 
 function Editor_Workspace({ user, project, layout, tasksVersion: propTasksVersion }) {
   const [localVersion, setLocalVersion] = useState(0);
-  const currentVersion = propTasksVersion !== undefined ? propTasksVersion : localVersion;
+  
+  const currentVersion = propTasksVersion !== undefined 
+    ? `${propTasksVersion}_${localVersion}` 
+    : localVersion;
+
   const [activeTask, setActiveTask] = useState(null);
 
   const handleTaskUpdated = () => {
