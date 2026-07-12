@@ -357,8 +357,19 @@
   --bg-card: #161925;
   --sidebar-bg: #090a0f;
   --text-main: #f7fafc;
-  --text-muted: #686868;
+  --text-muted: #234fff;
   --border-color: #2d3748;
+  background-color: black;
+
+}
+
+.dashbg.dark-mode .project-item:hover {
+  background-color: rgba(0, 14, 141, 0.5);
+}
+
+.date-start.dashbg.dark-mode
+{
+  color: #234fff;
 }
 
 body.dark-mode .progress-bar {
