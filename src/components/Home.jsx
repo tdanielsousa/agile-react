@@ -2,7 +2,7 @@ import React from "react";
 import Home_Meta from "./Home_Meta";
 import Home_LoginForm from "./Home_LoginForm";
 import Home_RegisterForm from "./Home_RegisterForm";
-import "../logins.css";
+//import "../logins.css";
 
 function Home({ onLogin }) {
   return (

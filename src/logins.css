@@ -13,6 +13,7 @@
   border-radius: 12px;
   color: #334155;
   transition: all 0.2s ease;
+  font-weight: 600;
 }
 
 .login-input:focus {
@@ -101,6 +102,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  font-weight: 600;
 }
 
 .inline-red-btn {
