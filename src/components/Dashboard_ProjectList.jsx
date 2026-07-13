@@ -35,7 +35,7 @@ function Dashboard_ProjectList({ user, currentView, setView, onSelectProject }) 
           <p>No projects yet</p>
         </div>
       ) : (
-        <div className="projects-list">
+        <div className="projects-list-big">
           {projects.map((project) => {
             let statusClass = "red";
             let statusText = "Archived";
@@ -54,7 +54,7 @@ function Dashboard_ProjectList({ user, currentView, setView, onSelectProject }) 
               >
                 <div className="project-info">
                   <span className="project-name">
-                    {project.name} id nr: {project.id}
+                    {project.name} id nr: {/*id nr: {project.id}{" "}*/}
                   </span>
 
                   <span className={`project-stat ${statusClass}`}>

@@ -6,7 +6,7 @@ function Toolbar_First_Row({ displayName, projectId, project, onDeleteProject })
       <div className="toolbar-group">
         <span className="label">Project:</span>
         <span className="project-current-name">
-          {displayName} (ID: {projectId}) — <small>[{project.status}]</small>
+          {displayName} {/*(ID: {projectId}) — <small>[{project.status}]</small>*/}
         </span>
       </div>
 

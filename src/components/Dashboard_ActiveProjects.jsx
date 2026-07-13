@@ -59,7 +59,7 @@ function Dashboard_ActiveProjects({ user, currentView, setView, onSelectProject 
             >
               <div className="project-info">
                 <span className="project-name">
-                  {project.name} id nr: {project.id}{" "}
+                  {project.name} {/*id nr: {project.id}{" "}*/}
                 </span>
                 <span className="project-percentage">
                   Total Tasks: <strong>{project.totalTasks}</strong>
