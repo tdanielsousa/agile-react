@@ -5,11 +5,11 @@
   --text-main: #2d3748;
   --text-muted: #686868;
   --border-color: #e2e8f0;
-
-  --blue: #0a14a3;
-  --green: #128c37;
-  --yellow: #ccb43c;
-  --red: #c81a1a;
+ 
+  --blue:  rgba(10, 20, 163, 0.8);
+  --green: rgba(18, 140, 55, 0.8);
+  --yellow: rgba(204, 180, 60, 0.8);
+  --red: #rgba(200, 26, 26, 0.8);
   --gray: #2d3138;
 
   color: var(--text-main);
@@ -77,7 +77,7 @@
 
 .btn-create {
   flex: 1;
-  background-color: #0a14a3;
+  background-color: var(--blue);
   color: white;
   border: none;
   padding: 10px;
@@ -87,7 +87,7 @@
 }
 
 .btn-plus {
-  background-color: #0a14a3;
+  background-color: var(--blue);
   color: white;
   border: none;
   padding: 10px 14px;
@@ -366,7 +366,7 @@
   --sidebar-bg: #090a0f;
   --text-main: #f7fafc;
   --text-muted: #234fff;
-  --border-color: #234fff;
+  --border-color: #002144;
   background-color: black;
 
 }
