@@ -42,9 +42,9 @@ function Dashboard({ user, onLogout }) {
               <main className="main-content">
                 <header className="main-header">
                   <h1>{headerTitle}</h1>
-                  <div className="language-selector">
+                 {/* <div className="language-selector">
                     user data: {JSON.stringify(user, null, 2)}
-                  </div>
+                  </div>*/}
                 </header>
 
                 {currentView === "dashboard" && (

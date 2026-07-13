@@ -1,15 +1,15 @@
 .dashbg {
-  --bg-app: #ececec;
+  --bg-app: #ecececcf;
   --bg-card: #ffffff;
   --sidebar-bg: #1a1d20;
   --text-main: #2d3748;
   --text-muted: #686868;
   --border-color: #e2e8f0;
- 
-  --blue:  rgba(10, 20, 163, 0.8);
-  --green: rgba(18, 140, 55, 0.8);
-  --yellow: rgba(204, 180, 60, 0.8);
-  --red: #rgba(200, 26, 26, 0.8);
+
+  --blue: #1e3a8a;
+  --green: #064e3b;
+  --yellow: #cab932;
+  --red: #991b1b;
   --gray: #2d3138;
 
   color: var(--text-main);
@@ -24,7 +24,7 @@
   overflow: hidden;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   /* background: var(--bg-app); */
-  background: rgba(255, 255, 255, 0.70);
+  background: rgba(255, 255, 255, 0.45);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
 }
@@ -298,6 +298,19 @@
   */
 }
 
+.projects-list-big {
+  display: flex;
+  flex-direction: column;
+  max-height: 75vh;
+  overflow-y: auto;
+  padding: 4px;
+  /*
+  background: var(--bg-app);
+  border-radius: 8px;
+  */
+}
+
+
 .project-item {
   border: 1px solid var(--border-color);
   transition: background-color 1s ease;
@@ -368,6 +381,10 @@
   --text-muted: #234fff;
   --border-color: #002144;
   background-color: black;
+  --blue:  rgba(10, 20, 163, 0.8);
+  --green: rgba(18, 140, 55, 0.8);
+  --yellow: rgba(204, 180, 60, 0.8);
+  --red: rgba(200, 26, 26, 0.8);
 
 }
 

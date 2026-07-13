@@ -29,9 +29,6 @@ function Dashboard_ProjectList({ user, currentView, setView, onSelectProject }) 
 
   return (
     <section className="content-projlist">
-      <div className="card-header">
-        <h2>All Projects</h2>
-      </div>
 
       {projects.length === 0 ? (
         <div className="no-projects">
@@ -65,7 +62,7 @@ function Dashboard_ProjectList({ user, currentView, setView, onSelectProject }) 
                   </span>
 
                   <span className="project-percentage">
-                    Total Tasks <strong>{project.totalTasks}</strong>
+                    Total Tasks: <strong>{project.totalTasks}</strong>
                   </span>
                 </div>
 
