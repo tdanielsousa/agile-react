@@ -47,13 +47,10 @@ export async function onRequest(context) {
     });
 
     if (result.rowsAffected === 0) {
-      return new Response(
-        JSON.stringify({ error: "Project not found." }), 
-        { 
-          status: 404, 
-          headers: { "Content-Type": "application/json", ...corsHeaders } 
-        }
-      );
+      return new Response(JSON.stringify({ error: "Project not found." }), {
+        status: 404,
+        headers: { "Content-Type": "application/json", ...corsHeaders },
+      });
     }
 
     return new Response(
@@ -70,7 +67,7 @@ export async function onRequest(context) {
     console.error("Turso Database Error:", error);
     return new Response(
       JSON.stringify({
-        error: "Erro ao atualizar o nome do projeto.",
+        error: "Error changing project name.",
         details: error.message,
       }),
       {

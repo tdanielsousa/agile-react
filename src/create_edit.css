@@ -298,10 +298,9 @@
   overflow-y: auto;
   overflow-x: auto;
   margin-top: 10px;
-  background-color: #dfe0e1;
+  background-color: #ffffffc2;
   padding: 15px;
   border-radius: 8px;
-  border: 1px solid #a0caff;
 }
 
 .dashbg .print_kanban-grid {
@@ -459,7 +458,7 @@
 }
 
 .print_task-card .task-date {
-  font-size: 0.80rem;
+  font-size: 0.8rem;
 }
 
 /* /////////////////////////////////////////////////////////////// */
@@ -513,7 +512,7 @@
 }
 
 .change-name-modal-close-btn:hover {
-  color: #333; 
+  color: #333;
 }
 
 .change-name-modal-form-group {
@@ -566,8 +565,12 @@
 }
 
 @keyframes changeNameModalFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes changeNameModalSlideUp {
@@ -632,7 +635,7 @@
 }
 
 .taskmodal-close-btn:hover {
-  color: #333; 
+  color: #333;
 }
 
 .taskmodal-form-group {
@@ -656,7 +659,7 @@
   border: 1px solid #cbd5e0;
   border-radius: 6px;
   font-family: inherit;
-  font-size: 0.90em;
+  font-size: 0.9em;
 }
 
 .taskmodal-form-group textarea {
@@ -698,8 +701,12 @@
 }
 
 @keyframes taskmodalFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes taskmodalSlideUp {
@@ -713,15 +720,31 @@
   }
 }
 
-.status-select.todo { color: var(--blue); }
-.status-select.progress { color: var(--yellow); }
-.status-select.completed { color: var(--green); }
-.status-select.over { color: var(--red); }
+.status-select.todo {
+  color: var(--blue);
+}
+.status-select.progress {
+  color: var(--yellow);
+}
+.status-select.completed {
+  color: var(--green);
+}
+.status-select.over {
+  color: var(--red);
+}
 
-.status-select option[value="TODO"] { color: var(--blue); }
-.status-select option[value="PROGRESS"] { color: var(--yellow); }
-.status-select option[value="COMPLETED"] { color: var(--green); }
-.status-select option[value="OVER"] { color: var(--red); }
+.status-select option[value="TODO"] {
+  color: var(--blue);
+}
+.status-select option[value="PROGRESS"] {
+  color: var(--yellow);
+}
+.status-select option[value="COMPLETED"] {
+  color: var(--green);
+}
+.status-select option[value="OVER"] {
+  color: var(--red);
+}
 
 .status-select {
   font-weight: 700;

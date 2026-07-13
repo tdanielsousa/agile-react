@@ -54,7 +54,7 @@ function Dashboard_ProjectStats({ user }) {
         setLoading(false);
       })
       .catch((err) => {
-        console.error("Erro ao carregar estatísticas:", err);
+        console.error("Error getting stats:", err);
         setLoading(false);
       });
   }, [user.id]);

@@ -23,7 +23,6 @@ export async function onRequest(context) {
   try {
     const { name, note, dueDate, projectId, userId } = await request.json();
 
-
     if (!name || !name.trim()) {
       return new Response(JSON.stringify({ error: "Task name is required." }), {
         status: 400,
@@ -71,7 +70,7 @@ export async function onRequest(context) {
     console.error("Erro na API create-task:", error);
     return new Response(
       JSON.stringify({
-        error: "Erro ao criar tarefa no banco de dados.",
+        error: "Error creating task.",
         details: error.message,
       }),
       {

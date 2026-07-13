@@ -21,7 +21,6 @@ export async function onRequest(context) {
   }
 
   try {
-
     const { username, password } = await request.json();
 
     if (!username || !password) {

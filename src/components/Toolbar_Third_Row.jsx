@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import { createPortal } from "react-dom";
 import InsertTask from "./InsertTask";
 
-function Toolbar_Third_Row({ user, projectId, layout, setLayout, onRefreshData }) {
+function Toolbar_Third_Row({
+  user,
+  projectId,
+  layout,
+  setLayout,
+  onRefreshData,
+}) {
   const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
 
   return (
@@ -23,7 +29,9 @@ function Toolbar_Third_Row({ user, projectId, layout, setLayout, onRefreshData }
       <div className="toolbar-group utilities-right">
         <a
           href="#"
-          className={`toolbar-btn ${layout === "kanban" ? "active-layout" : ""}`}
+          className={`toolbar-btn ${
+            layout === "kanban" ? "active-layout" : ""
+          }`}
           onClick={(e) => {
             e.preventDefault();
             setLayout("kanban");

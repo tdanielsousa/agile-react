@@ -19,7 +19,7 @@ function Dashboard_MetricCards({ user }) {
         setLoading(false);
       })
       .catch((err) => {
-        console.error("Erro ao ir buscar métricas:", err);
+        console.error("Error getting metrics", err);
         setLoading(false);
       });
   }, []);

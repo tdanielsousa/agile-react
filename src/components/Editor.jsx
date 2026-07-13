@@ -44,7 +44,9 @@ function Editor({ user, projectId, setProjectId, currentView, setView }) {
           return (
             <div className="editor-container">
               <div className="editor-workspace">
-                <p className="workspace-placeholder">Connecting to database...</p>
+                <p className="workspace-placeholder">
+                  Connecting to database...
+                </p>
               </div>
             </div>
           );

@@ -61,7 +61,13 @@ export async function onRequest(context) {
         SET name = ?, status = ?, note = ?, due_date = ? 
         WHERE id = ?
       `,
-      args: [name, normalizedStatus, note || null, dueDate || null, Number(taskId)],
+      args: [
+        name,
+        normalizedStatus,
+        note || null,
+        dueDate || null,
+        Number(taskId),
+      ],
     });
 
     return new Response(

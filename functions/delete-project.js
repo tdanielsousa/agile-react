@@ -70,7 +70,7 @@ export async function onRequest(context) {
     console.error("Turso Delete Error:", error);
     return new Response(
       JSON.stringify({
-        error: "Erro ao eliminar o projeto.",
+        error: "Error deleting the project.",
         details: error.message,
       }),
       {

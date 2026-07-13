@@ -16,8 +16,8 @@ function Editor_Workspace_Kanban({ columns, onSelectTask }) {
               <p className="no-tasks">No tasks</p>
             ) : (
               col.tasks.map((task) => (
-                <div 
-                  className="print_task-card" 
+                <div
+                  className="print_task-card"
                   key={task.id}
                   onClick={() => onSelectTask(task)}
                   style={{ cursor: "pointer" }}

@@ -14,7 +14,6 @@ export async function onRequest(context) {
   }
 
   try {
-
     const url = new URL(request.url);
     const userId = url.searchParams.get("userId");
 
@@ -96,7 +95,7 @@ export async function onRequest(context) {
     console.error(error);
     return new Response(
       JSON.stringify({
-        error: "Erro ao carregar projetos da base de dados.",
+        error: "Error loading project list.",
         details: error.message,
       }),
       {

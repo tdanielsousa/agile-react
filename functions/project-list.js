@@ -9,7 +9,6 @@ export async function onRequest(context) {
     "Access-Control-Allow-Headers": "Content-Type",
   };
 
-
   if (request.method === "OPTIONS") {
     return new Response(null, { status: 200, headers: corsHeaders });
   }
@@ -97,7 +96,7 @@ export async function onRequest(context) {
     console.error(error);
     return new Response(
       JSON.stringify({
-        error: "Erro ao carregar projetos da base de dados.",
+        error: "Error loading projects.",
         details: error.message,
       }),
       {

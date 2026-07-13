@@ -2,14 +2,20 @@ import React, { useState } from "react";
 import Editor_Workspace_Meta from "./Editor_Workspace_Meta";
 import Editor_Workspace_Kanban from "./Editor_Workspace_Kanban";
 import Editor_Workspace_List from "./Editor_Workspace_List";
-import TaskEditModal from "./TaskEditModal"; 
+import TaskEditModal from "./TaskEditModal";
 
-function Editor_Workspace({ user, project, layout, tasksVersion: propTasksVersion }) {
+function Editor_Workspace({
+  user,
+  project,
+  layout,
+  tasksVersion: propTasksVersion,
+}) {
   const [localVersion, setLocalVersion] = useState(0);
-  
-  const currentVersion = propTasksVersion !== undefined 
-    ? `${propTasksVersion}_${localVersion}` 
-    : localVersion;
+
+  const currentVersion =
+    propTasksVersion !== undefined
+      ? `${propTasksVersion}_${localVersion}`
+      : localVersion;
 
   const [activeTask, setActiveTask] = useState(null);
 
@@ -32,14 +38,14 @@ function Editor_Workspace({ user, project, layout, tasksVersion: propTasksVersio
           return (
             <div className="print_editor-workspace">
               {layout === "kanban" ? (
-                <Editor_Workspace_Kanban 
-                  columns={columns} 
-                  onSelectTask={setActiveTask} 
+                <Editor_Workspace_Kanban
+                  columns={columns}
+                  onSelectTask={setActiveTask}
                 />
               ) : (
-                <Editor_Workspace_List 
-                  columns={columns} 
-                  onSelectTask={setActiveTask} 
+                <Editor_Workspace_List
+                  columns={columns}
+                  onSelectTask={setActiveTask}
                 />
               )}
             </div>

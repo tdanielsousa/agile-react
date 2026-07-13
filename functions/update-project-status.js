@@ -73,7 +73,7 @@ export async function onRequest(context) {
     console.error("Turso Database Error:", error);
     return new Response(
       JSON.stringify({
-        error: "Erro ao atualizar o estado do projeto.",
+        error: "Error updating the project.",
         details: error.message,
       }),
       {

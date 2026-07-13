@@ -13,8 +13,8 @@ function Editor_Workspace_List({ columns, onSelectTask }) {
               <h3 className="print_list-section-title">{col.title}</h3>
               <div className="print_list-container">
                 {col.tasks.map((task) => (
-                  <div 
-                    className="print_task-card" 
+                  <div
+                    className="print_task-card"
                     key={task.id}
                     onClick={() => onSelectTask(task)}
                     style={{ cursor: "pointer" }}

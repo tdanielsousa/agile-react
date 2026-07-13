@@ -13,7 +13,6 @@ export async function onRequest(context) {
     return new Response(null, { status: 200, headers: corsHeaders });
   }
 
-
   if (request.method !== "POST") {
     return new Response(JSON.stringify({ error: "Method Not Allowed" }), {
       status: 405,
@@ -42,7 +41,7 @@ export async function onRequest(context) {
         }
       );
     }
-    
+
     const client = createClient({
       url: env.TURSO_DATABASE_URL,
       authToken: env.TURSO_AUTH_TOKEN,
@@ -69,7 +68,7 @@ export async function onRequest(context) {
     console.error(error);
     return new Response(
       JSON.stringify({
-        error: "Erro ao criar o projeto na base de dados.",
+        error: "Error creating the project in the db.",
         details: error.message,
       }),
       {

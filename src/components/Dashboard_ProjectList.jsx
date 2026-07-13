@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-function Dashboard_ProjectList({ user, currentView, setView, onSelectProject }) {
+function Dashboard_ProjectList({
+  user,
+  currentView,
+  setView,
+  onSelectProject,
+}) {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -14,7 +19,7 @@ function Dashboard_ProjectList({ user, currentView, setView, onSelectProject }) 
         setLoading(false);
       })
       .catch((err) => {
-        console.error("Erro ao ir buscar projetos:", err);
+        console.error("Error getting projects:", err);
         setLoading(false);
       });
   }, []);
@@ -29,7 +34,6 @@ function Dashboard_ProjectList({ user, currentView, setView, onSelectProject }) 
 
   return (
     <section className="content-projlist">
-
       {projects.length === 0 ? (
         <div className="no-projects">
           <p>No projects yet</p>
@@ -54,7 +58,7 @@ function Dashboard_ProjectList({ user, currentView, setView, onSelectProject }) 
               >
                 <div className="project-info">
                   <span className="project-name">
-                    {project.name} id nr: {/*id nr: {project.id}{" "}*/}
+                    {project.name} {/*id nr: {project.id}{" "}*/}
                   </span>
 
                   <span className={`project-stat ${statusClass}`}>
@@ -103,7 +107,7 @@ function Dashboard_ProjectList({ user, currentView, setView, onSelectProject }) 
                 <div className="user-notes-box">
                   <div className="dates-container">
                     <span className="date-start">
-                      Created at - {project.createdAt}
+                      📅 Created at - {project.createdAt}
                     </span>
                     <span className="date-end"></span>
                   </div>

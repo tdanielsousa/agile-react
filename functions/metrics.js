@@ -16,7 +16,7 @@ export async function onRequest(context) {
   try {
     const url = new URL(request.url);
     const userIdParam = url.searchParams.get("userId");
-    const userId = userIdParam ? Number(userIdParam) : 1; 
+    const userId = userIdParam ? Number(userIdParam) : 1;
 
     const client = createClient({
       url: env.TURSO_DATABASE_URL,
@@ -69,7 +69,7 @@ export async function onRequest(context) {
     console.error(error);
     return new Response(
       JSON.stringify({
-        error: "Erro ao carregar as métricas.",
+        error: "Error loading metrics.",
         details: error.message,
       }),
       {

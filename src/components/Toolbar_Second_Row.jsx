@@ -2,14 +2,20 @@ import React, { useState } from "react";
 import { createPortal } from "react-dom";
 import UpdateProjectName from "./UpdateProjectName";
 
-function Toolbar_Second_Row({ projectId, displayName, project, onStatusChange, onLocalNameChange }) {
+function Toolbar_Second_Row({
+  projectId,
+  displayName,
+  project,
+  onStatusChange,
+  onLocalNameChange,
+}) {
   const [isNameModalOpen, setIsNameModalOpen] = useState(false);
 
   return (
     <div className="toolbar-row secondary-row">
       <div className="toolbar-group">
-        <a 
-          href="#" 
+        <a
+          href="#"
           className="toolbar-btn btn-change-name"
           onClick={(e) => {
             e.preventDefault();
@@ -49,7 +55,7 @@ function Toolbar_Second_Row({ projectId, displayName, project, onStatusChange, o
             onClose={() => setIsNameModalOpen(false)}
             onNameUpdated={(savedName) => {
               if (onLocalNameChange) onLocalNameChange(savedName);
-            }} 
+            }}
           />,
           document.body
         )}

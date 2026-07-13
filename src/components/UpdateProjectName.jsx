@@ -1,17 +1,16 @@
-import React from 'react';
-import UpdateProjectName_Meta from './UpdateProjectName_Meta';
+import React from "react";
+import UpdateProjectName_Meta from "./UpdateProjectName_Meta";
 
 function UpdateProjectName({ projectId, currentName, onClose, onNameUpdated }) {
-  const {
-    newName,
-    setNewName,
-    isSubmitting,
-    handleSubmit,
-  } = UpdateProjectName_Meta({ projectId, currentName, onClose, onNameUpdated });
+  const { newName, setNewName, isSubmitting, handleSubmit } =
+    UpdateProjectName_Meta({ projectId, currentName, onClose, onNameUpdated });
 
   return (
     <div className="change-name-modal-backdrop" onClick={onClose}>
-      <div className="change-name-modal-box" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="change-name-modal-box"
+        onClick={(e) => e.stopPropagation()}
+      >
         <button className="change-name-modal-close-btn" onClick={onClose}>
           &times;
         </button>
@@ -31,12 +30,12 @@ function UpdateProjectName({ projectId, currentName, onClose, onNameUpdated }) {
             />
           </div>
           <div className="change-name-modal-actions">
-            <button 
-              type="submit" 
-              className="change-name-modal-btn-save" 
+            <button
+              type="submit"
+              className="change-name-modal-btn-save"
               disabled={isSubmitting || !newName.trim()}
             >
-              {isSubmitting ? 'Saving...' : 'Save'}
+              {isSubmitting ? "Saving..." : "Save"}
             </button>
           </div>
         </form>

@@ -12,7 +12,6 @@ import App from "../App";
 import "../dashboard.css";
 
 function Dashboard({ user, onLogout }) {
-
   if (!user) {
     return <App />;
   }
@@ -42,7 +41,7 @@ function Dashboard({ user, onLogout }) {
               <main className="main-content">
                 <header className="main-header">
                   <h1>{headerTitle}</h1>
-                 {/* <div className="language-selector">
+                  {/* <div className="language-selector">
                     user data: {JSON.stringify(user, null, 2)}
                   </div>*/}
                 </header>
@@ -98,7 +97,10 @@ function Dashboard({ user, onLogout }) {
                 )}
 
                 {currentView === "editor" && (
-                  <div key="editor-view" className="content-card editor fade-in">
+                  <div
+                    key="editor-view"
+                    className="content-card editor fade-in"
+                  >
                     <Editor
                       user={user}
                       projectId={selectedProjectId}

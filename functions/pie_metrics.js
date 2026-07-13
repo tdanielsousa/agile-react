@@ -14,7 +14,6 @@ export async function onRequest(context) {
   }
 
   try {
-
     const url = new URL(request.url);
     const userIdParam = url.searchParams.get("userId");
     const userId = userIdParam ? Number(userIdParam) : null;
@@ -29,7 +28,6 @@ export async function onRequest(context) {
       );
     }
 
-  
     const client = createClient({
       url: env.TURSO_DATABASE_URL,
       authToken: env.TURSO_AUTH_TOKEN,

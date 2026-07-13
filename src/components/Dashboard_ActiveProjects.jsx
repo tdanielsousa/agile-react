@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-function Dashboard_ActiveProjects({ user, currentView, setView, onSelectProject }) {
+function Dashboard_ActiveProjects({
+  user,
+  currentView,
+  setView,
+  onSelectProject,
+}) {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -103,7 +108,7 @@ function Dashboard_ActiveProjects({ user, currentView, setView, onSelectProject 
               <div className="user-notes-box">
                 <div className="dates-container">
                   <span className="date-start">
-                  📅 Created at - {project.createdAt}
+                    📅 Created at - {project.createdAt}
                   </span>
                   <span className="date-end"></span>
                 </div>

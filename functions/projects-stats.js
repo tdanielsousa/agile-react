@@ -84,7 +84,7 @@ export async function onRequest(context) {
     console.error("Erro na API projects-stats:", error);
     return new Response(
       JSON.stringify({
-        error: "Erro ao carregar as estatísticas dos projetos.",
+        error: "Erro loading stats.",
         details: error.message,
       }),
       {

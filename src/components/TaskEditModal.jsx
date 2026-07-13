@@ -41,7 +41,6 @@ function TaskEditModal({ task, onClose, onTaskUpdated }) {
                 />
               </div>
 
-              
               <div className="taskmodal-form-group">
                 <label htmlFor="task-status">Status</label>
                 <select

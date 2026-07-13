@@ -7,7 +7,6 @@ function Editor_Workspace_Meta({ project, tasksVersion, children }) {
   useEffect(() => {
     if (!project?.id) return;
 
-
     setLoading(true);
 
     fetch(`/get-tasks?projectId=${project.id}`)
@@ -16,7 +15,7 @@ function Editor_Workspace_Meta({ project, tasksVersion, children }) {
         return res.json();
       })
       .then((data) => {
-        setTasks([...data]); 
+        setTasks([...data]);
         setLoading(false);
       })
       .catch((err) => {
