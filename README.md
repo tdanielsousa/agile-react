@@ -6,6 +6,12 @@ It is built on an edge-first architecture, delivering low-latency interactions a
 
 The application features a clean, glassmorphism-inspired interface with both Kanban and List views, integrated analytics, and a modular component system optimized for performance and maintainability.
 
+https://agile-app.pages.dev/
+
+---
+
+![Agile GIF](https://github.com/tdanielsousa/tdanielsousa/raw/main/gifs/agile.gif)
+
 ---
 
 ## Introduction
@@ -22,6 +28,7 @@ Prioritizing maintainability and architectural simplicity, I transitioned to a m
 
 This project reflects not only my introduction to modern full-stack development, React and CI/CD but also my ability to evaluate trade-offs and make pragmatic engineering decisions under time constraints.
 
+https://agile-app.pages.dev/
 
 ---
 
@@ -93,15 +100,58 @@ npm install
 
 ### Environment Configuration
 
-Create a `.env` file:
-
-```env
-VITE_API_BASE_URL=http://localhost:8788
+```Need:
+TURSO_AUTH_TOKEN
+TURSO_DATABASE_URL
 ```
 
-> Note: Database credentials should be configured in Cloudflare environment bindings, not in Vite-exposed variables.
+> Note: You will need to create a Turso DB and add their secrets. 
 
 ---
+
+### Database Schema 
+
+```Schema:
+CREATE TABLE `users` (
+	`id` integer PRIMARY KEY AUTOINCREMENT,
+	`username` text NOT NULL UNIQUE,
+	`password_hash` text NOT NULL,
+	`created_at` numeric DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE `projects` (
+	`id` integer PRIMARY KEY AUTOINCREMENT,
+	`name` text NOT NULL,
+	`status` text NOT NULL,
+	`created_at` numeric DEFAULT CURRENT_TIMESTAMP,
+	`user_id` integer NOT NULL,
+	CONSTRAINT `fk_projects_user_id_users_id_fk` FOREIGN KEY (`user_id`) REFERENCES `users`(`id`)
+);
+CREATE TABLE `tasks` (
+	`id` integer PRIMARY KEY AUTOINCREMENT,
+	`project_id` integer NOT NULL,
+	`user_id` integer NOT NULL,
+	`name` text NOT NULL,
+	`status` text NOT NULL,
+	`note` text,
+	`created_at` numeric DEFAULT CURRENT_TIMESTAMP,
+	`due_date` numeric,
+	CONSTRAINT `fk_tasks_user_id_users_id_fk` FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
+	CONSTRAINT `fk_tasks_project_id_projects_id_fk` FOREIGN KEY (`project_id`) REFERENCES `projects`(`id`)
+);
+```
+
+
+Projects on the DB can be:  
+
+**ACTIVE** or **OVER**   .
+
+Tasks on the DB can be:  
+
+**TODO** , **PROGRESS** , **COMPLETED** , **OVER** .
+
+
+---
+
 
 ### Run Development Environment
 
